@@ -27,6 +27,18 @@ struct SMRSize {
 };
 typedef struct CG_BOXABLE SMRSize SMRSize;
 
+typedef NS_ENUM(NSInteger, SMRAlign) {
+    SMRAlignTopLeft,
+    SMRAlignTopCenter,
+    SMRAlignTopRight,
+    SMRAlignCenterLeft,
+    SMRAlignCenter,
+    SMRAlignCenterRight,
+    SMRAlignBottomLeft,
+    SMRAlignBottomCenter,
+    SMRAlignBottomRight,
+};
+
 typedef NS_ENUM(NSInteger, SMRMainAlign) {
     SMRMainAlignStart,
     SMRMainAlignEnd,
@@ -58,6 +70,7 @@ typedef NS_ENUM(NSInteger, SMRCrossAlign) {
 
 @property (strong, nonatomic) UIView *view;
 
+@property (assign, nonatomic) SMRAlign align;
 @property (assign, nonatomic) CGFloat width;
 @property (assign, nonatomic) CGFloat height;
 @property (assign, nonatomic) UIEdgeInsets padding;
