@@ -116,13 +116,7 @@
 @implementation SMRRow
 
 - (CGSize)layoutWithinBounds:(CGRect)bounds {
-    CGPoint limitOrigin = bounds.origin;
-    CGSize limitSize = bounds.size;
-    limitOrigin = CGPointMake(limitOrigin.x + _padding.left,
-                              limitOrigin.y + _padding.top);
-    limitSize = CGSizeMake(limitSize.width - _padding.left - _padding.right,
-                           limitSize.height - _padding.top - _padding.bottom);
-    
+    CGRect limit = CGRectInPadding(bounds, _padding);
     NSMutableArray<NSValue *> *fixSizes = [NSMutableArray array];
     NSInteger expendCount = 0;
     CGFloat expendWidth = 0;
@@ -137,60 +131,34 @@
         } else {
             expendCount ++;
         }
-        if (fixChildWidth > limitSize.width) {
+        if (fixChildWidth > limit.size.width) {
             NSLog(@"warning:%@超出父布局限定宽, in:%@", child, self);
         }
         maxHeight = MAX(maxHeight, csize.height);
     }
     if (expendCount) {
-        expendWidth = (limitSize.width - fixChildWidth)/expendCount;
+        expendWidth = (limit.size.width - fixChildWidth)/expendCount;
     }
     NSMutableArray<NSValue *> *preframes = [NSMutableArray array];
-    CGFloat offsetX = limitOrigin.x;
+    CGFloat offsetX = limit.origin.x;
     CGFloat fixdWidth = 0;
     for (int idx = 0; idx < _children.count; idx++) {
         CGSize csize = fixSizes[idx].CGSizeValue;
-        
-        CGSize dessize = CGSizeMake(csize.width ?: expendWidth,
-                                    csize.height ?: limitSize.height);
-        CGFloat offsetY = limitOrigin.y + [self p_offsetYWithHeight:dessize.height maxHeight:maxHeight];
-        CGRect frame = CGRectMake(offsetX, offsetY, dessize.width, dessize.height);
+        CGSize useSize = CGSizeNoZero(csize, CGSizeMake(expendWidth, limit.size.height));
+        CGFloat offsetY = limit.origin.y + SMRMainAlignOffset(useSize.height, maxHeight, _mainAlign);
+        CGRect frame = {{offsetX, offsetY}, useSize};
         offsetX += frame.size.width;
         fixdWidth += frame.size.width;
         [preframes addObject:[NSValue valueWithCGRect:frame]];
     }
-    CGFloat fixdOffsetX = [self p_fixdOffsetXWithWidth:fixdWidth maxWidth:limitSize.width];
+    CGFloat fixdOffsetX = SMRCrossAlignOffset(fixdWidth, limit.size.width, _crossAlign);
     for (int idx = 0; idx < _children.count; idx++) {
         SMRLayout *child = _children[idx];
-        CGRect frame = preframes[idx].CGRectValue;
-        frame = CGRectMake(frame.origin.x + fixdOffsetX, frame.origin.y,
-                           frame.size.width, frame.size.height);
+        CGRect frame = CGRectOffset(preframes[idx].CGRectValue, fixdOffsetX, 0);
         [child layoutWithinBounds:frame];
     }
     
     return bounds.size;
-}
-
-- (CGFloat)p_offsetYWithHeight:(CGFloat)height maxHeight:(CGFloat)maxHeight {
-    switch (_crossAlign) {
-        case SMRCrossAlignStart:
-            return 0;
-        case SMRCrossAlignEnd:
-            return (maxHeight - height);
-        default: break;
-    }
-    return (maxHeight - height)/2;
-}
-
-- (CGFloat)p_fixdOffsetXWithWidth:(CGFloat)width maxWidth:(CGFloat)maxWidth {
-    switch (_mainAlign) {
-        case SMRMainAlignStart:
-            return 0;
-        case SMRMainAlignEnd:
-            return (maxWidth - width);
-        default: break;
-    }
-    return (maxWidth - width)/2;
 }
 
 @end

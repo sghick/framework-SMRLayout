@@ -33,6 +33,28 @@ typedef NS_ENUM(NSInteger, SMRCrossAlign) {
     SMRCrossAlignCenter,
 };
 
+UIKIT_STATIC_INLINE CGFloat SMRMainAlignOffset(CGFloat x1, CGFloat x2, SMRMainAlign mainAlign) {
+    switch (mainAlign) {
+        case SMRMainAlignStart:
+            return 0;
+        case SMRMainAlignEnd:
+            return (x2 - x1);
+        default: break;
+    }
+    return (x2 - x1)/2;
+}
+
+UIKIT_STATIC_INLINE CGFloat SMRCrossAlignOffset(CGFloat x1, CGFloat x2, SMRCrossAlign crossAlign) {
+    switch (crossAlign) {
+        case SMRCrossAlignStart:
+            return 0;
+        case SMRCrossAlignEnd:
+            return (x2 - x1);
+        default: break;
+    }
+    return (x2 - x1)/2;
+}
+
 @interface SMRLayout : NSObject
 
 @property (assign, nonatomic, readonly) BOOL dirty;
