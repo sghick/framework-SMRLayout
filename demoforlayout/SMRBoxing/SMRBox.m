@@ -6,6 +6,7 @@
 //
 
 #import "SMRBox.h"
+#import "SMRGeometry.h"
 
 @implementation SMRLayout
 
@@ -52,57 +53,59 @@
 }
 
 - (CGSize)layoutWithinBounds:(CGRect)bounds {
-    CGPoint limitOrigin = bounds.origin;
-    CGSize limitSize = bounds.size;
+    CGRect limit = CGRectInPadding(bounds, _padding);
+    CGSize autoSize = limit.size;
     if (_child) {
         CGSize csize = [_child sizeThatFit];
-        CGSize paddingSize = CGSizeMake(limitSize.width - _padding.left - _padding.right,
-                                        limitSize.height - _padding.top - _padding.bottom);
-        if (bounds.size.width && (csize.width > paddingSize.width)) {
+        if (bounds.size.width && (csize.width > limit.size.width)) {
             NSLog(@"warning:%@超出父布局限定宽, in:%@", _child, self);
         }
-        if (bounds.size.height && (csize.height > paddingSize.height)) {
+        if (bounds.size.height && (csize.height > limit.size.height)) {
             NSLog(@"warning:%@超出父布局限定宽, in:%@", _child, self);
         }
-        CGRect frame = CGRectMake(limitOrigin.x, limitOrigin.y,
-                                  csize.width ?: paddingSize.width,
-                                  csize.height ?: paddingSize.height);
-        CGPoint alignOffset = [self p_offsetWithSize:frame.size maxSize:paddingSize];
-        frame = CGRectMake(frame.origin.x + _padding.left + alignOffset.x,
-                           frame.origin.y + _padding.top + alignOffset.y,
-                           frame.size.width, frame.size.height);
-        limitSize = [_child layoutWithinBounds:frame];
+        
+        CGSize useSize = CGSizeNoZero(csize, limit.size);
+        CGRect frame = {limit.origin, useSize};
+        CGPoint alignOffset = [self p_alignOffsetWithSize:useSize inSize:limit.size];
+        frame = CGRectOffset(frame, alignOffset.x, alignOffset.y);
+        autoSize = [_child layoutWithinBounds:frame];
     }
     
     if (_view) {
-        CGRect frame = CGRectMake(limitOrigin.x, limitOrigin.y,
-                                  bounds.size.width ?: limitSize.width,
-                                  bounds.size.height ?: limitSize.height);
+        CGSize viewSize = CGSizeNoZero(bounds.size, autoSize);
+        CGRect frame = {bounds.origin, viewSize};
         _view.frame = frame;
     }
-    return limitSize;
+    return autoSize;
 }
 
-- (CGPoint)p_offsetWithSize:(CGSize)size maxSize:(CGSize)maxSize {
-    switch (_align) {
+- (CGPoint)p_alignOffsetWithSize:(CGSize)size inSize:(CGSize)inSize {
+    CGSize subtract = CGSizeSubtract(inSize, size);
+    CGPoint mulitPoint = [self p_mulitPointWithAlign:_align];
+    CGSize mulitSize = CGSizeMultiply(subtract, mulitPoint);
+    return CGPointMake(mulitSize.width, mulitSize.height);
+}
+
+- (CGPoint)p_mulitPointWithAlign:(SMRAlign)align {
+    switch (align) {
         case SMRAlignTopLeft:
             return CGPointMake(0, 0);
         case SMRAlignTopCenter:
-            return CGPointMake((maxSize.width - size.width)/2, 0);
+            return CGPointMake(0.5, 0);
         case SMRAlignTopRight:
-            return CGPointMake((maxSize.width - size.width), 0);
+            return CGPointMake(1, 0);
         case SMRAlignCenterLeft:
-            return CGPointMake(0, (maxSize.height - size.height)/2);
+            return CGPointMake(0, 0.5);
         case SMRAlignCenter:
-            return CGPointMake((maxSize.width - size.width)/2, (maxSize.height - size.height)/2);
+            return CGPointMake(0.5, 0.5);
         case SMRAlignCenterRight:
-            return CGPointMake((maxSize.width - size.width), (maxSize.height - size.height)/2);
+            return CGPointMake(1, 0.5);
         case SMRAlignBottomLeft:
-            return CGPointMake(0, (maxSize.height - size.height));
+            return CGPointMake(0, 1);
         case SMRAlignBottomCenter:
-            return CGPointMake((maxSize.width - size.width)/2, (maxSize.height - size.height));
+            return CGPointMake(0.5, 1);
         case SMRAlignBottomRight:
-            return CGPointMake((maxSize.width - size.width), (maxSize.height - size.height));
+            return CGPointMake(1, 1);
         default: break;
     }
     return CGPointZero;

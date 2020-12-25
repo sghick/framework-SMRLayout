@@ -9,24 +9,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-struct SMRFloat {
-    BOOL isAuto;
-    CGFloat value;
-};
-typedef struct CG_BOXABLE SMRFloat SMRFloat;
-
-struct SMROrigin {
-    struct SMRFloat x;
-    struct SMRFloat y;
-};
-typedef struct CG_BOXABLE SMROrigin SMROrigin;
-
-struct SMRSize {
-    struct SMRFloat width;
-    struct SMRFloat height;
-};
-typedef struct CG_BOXABLE SMRSize SMRSize;
-
 typedef NS_ENUM(NSInteger, SMRAlign) {
     SMRAlignTopLeft,
     SMRAlignTopCenter,
@@ -98,5 +80,17 @@ typedef NS_ENUM(NSInteger, SMRCrossAlign) {
 @property (copy  , nonatomic) NSArray<SMRLayout *> *children;
 
 @end
+
+UIKIT_STATIC_INLINE SMRBox * box(void (^block)(SMRBox *set)) {
+    return [SMRBox layout:block];
+}
+
+UIKIT_STATIC_INLINE SMRRow * row(void (^block)(SMRRow *set)) {
+    return [SMRRow layout:block];
+}
+
+UIKIT_STATIC_INLINE SMRColumn * column(void (^block)(SMRColumn *set)) {
+    return [SMRColumn layout:block];
+}
 
 NS_ASSUME_NONNULL_END

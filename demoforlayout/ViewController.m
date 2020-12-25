@@ -48,26 +48,42 @@
     [self.view addSubview:view8];
     [self.view addSubview:view9];
     
-    NSArray *arr = @[view1, view2, view3, view4, view5, view6, view7, view8, view9];
-    
-    for (int i = 0; i < 9; i++) {
-        [box(^(SMRBox *set) {
-            set.view = self.view;
-            set.width = self.view.frame.size.width;
-            set.height = self.view.frame.size.height;
-            set.padding = UIEdgeInsetsMakeAll(20);
-            set.align = i;
-            set.child = box(^(SMRBox *set) {
-                UILabel *label = arr[i];
-                label.textAlignment = NSTextAlignmentCenter;
-                label.textColor = [UIColor whiteColor];
-                label.text = @(i).stringValue;
-                set.view = label;
+    [box(^(SMRBox * _Nonnull set) {
+        set.view = self.view;
+        set.width = self.view.frame.size.width;
+        set.height = self.view.frame.size.height;
+        set.padding = UIEdgeInsetsMakeAll(20);
+        set.child = box(^(SMRBox * _Nonnull set) {
+            set.view = view1;
+            set.padding = UIEdgeInsetsMakeAll(10);
+            set.child = box(^(SMRBox * _Nonnull set) {
+                set.view = view2;
                 set.width = 100;
                 set.height = 100;
             });
-        }) setState];
-    }
+        });
+    }) setState];
+    
+//    NSArray *arr = @[view1, view2, view3, view4, view5, view6, view7, view8, view9];
+//
+//    for (int i = 0; i < 9; i++) {
+//        [box(^(SMRBox *set) {
+//            set.view = self.view;
+//            set.width = self.view.frame.size.width;
+//            set.height = self.view.frame.size.height;
+//            set.padding = UIEdgeInsetsMakeAll(20);
+//            set.align = i;
+//            set.child = box(^(SMRBox *set) {
+//                UILabel *label = arr[i];
+//                label.textAlignment = NSTextAlignmentCenter;
+//                label.textColor = [UIColor whiteColor];
+//                label.text = @(i).stringValue;
+//                set.view = label;
+//                set.width = 100;
+//                set.height = 100;
+//            });
+//        }) setState];
+//    }
     
 //    SMRLayout *layout1 =
 //    box(^(SMRBox * _Nonnull set) {

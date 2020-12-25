@@ -55,6 +55,7 @@
 		1D7DBC0A25443DB2003611AB /* demoforlayoutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = demoforlayoutUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D7DBC0E25443DB2003611AB /* demoforlayoutUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = demoforlayoutUITests.m; sourceTree = "<group>"; };
 		1D7DBC1025443DB2003611AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D89B7E825966289002BACAF /* SMRGeometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMRGeometry.h; sourceTree = "<group>"; };
 		1DED9DE2259102C500D3BA94 /* SMRBoxing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRBoxing.h; sourceTree = "<group>"; };
 		1DED9DE3259102C500D3BA94 /* SMRBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRBox.h; sourceTree = "<group>"; };
 		1DED9DE4259102C500D3BA94 /* SMRBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRBox.m; sourceTree = "<group>"; };
@@ -146,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				1DED9DE2259102C500D3BA94 /* SMRBoxing.h */,
+				1D89B7E825966289002BACAF /* SMRGeometry.h */,
 				1DED9DE3259102C500D3BA94 /* SMRBox.h */,
 				1DED9DE4259102C500D3BA94 /* SMRBox.m */,
 			);
