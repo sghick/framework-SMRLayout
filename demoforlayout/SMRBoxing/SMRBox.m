@@ -67,7 +67,7 @@
         CGRect frame = CGRectMake(limitOrigin.x, limitOrigin.y,
                                   csize.width ?: paddingSize.width,
                                   csize.height ?: paddingSize.height);
-        CGPoint alignOffset = [self p_offsetWithSize:frame.size maxSize:limitSize];
+        CGPoint alignOffset = [self p_offsetWithSize:frame.size maxSize:paddingSize];
         frame = CGRectMake(frame.origin.x + _padding.left + alignOffset.x,
                            frame.origin.y + _padding.top + alignOffset.y,
                            frame.size.width, frame.size.height);
