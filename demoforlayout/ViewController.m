@@ -55,7 +55,7 @@
             set.view = self.view;
             set.width = self.view.frame.size.width;
             set.height = self.view.frame.size.height;
-            set.padding = UIEdgeInsetsMakeAll(10);
+            set.padding = UIEdgeInsetsMakeAll(20);
             set.align = i;
             set.child = box(^(SMRBox *set) {
                 UILabel *label = arr[i];

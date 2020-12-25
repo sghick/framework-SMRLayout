@@ -92,11 +92,11 @@
         case SMRAlignTopRight:
             return CGPointMake((maxSize.width - size.width), 0);
         case SMRAlignCenterLeft:
-            return CGPointMake((maxSize.width - size.width)/2, 0);
+            return CGPointMake(0, (maxSize.height - size.height)/2);
         case SMRAlignCenter:
             return CGPointMake((maxSize.width - size.width)/2, (maxSize.height - size.height)/2);
         case SMRAlignCenterRight:
-            return CGPointMake((maxSize.width - size.width)/2, (maxSize.height - size.height));
+            return CGPointMake((maxSize.width - size.width), (maxSize.height - size.height)/2);
         case SMRAlignBottomLeft:
             return CGPointMake(0, (maxSize.height - size.height));
         case SMRAlignBottomCenter:
