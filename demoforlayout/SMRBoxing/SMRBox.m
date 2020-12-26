@@ -58,10 +58,10 @@
     if (_child) {
         CGSize csize = [_child sizeThatFit];
         if (bounds.size.width && (csize.width > limit.size.width)) {
-            NSLog(@"warning:%@超出父布局限定宽, in:%@", _child, self);
+            NSLog(@"warning:%@超出父布局限定宽:%@, in:%@", _child, @(limit.size.width), self);
         }
         if (bounds.size.height && (csize.height > limit.size.height)) {
-            NSLog(@"warning:%@超出父布局限定宽, in:%@", _child, self);
+            NSLog(@"warning:%@超出父布局限定宽:%@, in:%@", _child, @(limit.size.height), self);
         }
         
         CGSize useSize = CGSizeNoZero(csize, limit.size);
@@ -131,8 +131,8 @@
         } else {
             expendCount ++;
         }
-        if (fixChildWidth > limit.size.width) {
-            NSLog(@"warning:%@超出父布局限定宽, in:%@", child, self);
+        if (limit.size.width && (fixChildWidth > limit.size.width)) {
+            NSLog(@"warning:%@超出父布局限定宽:%@, in:%@", child, @(limit.size.width), self);
         }
         maxHeight = MAX(maxHeight, csize.height);
     }
@@ -145,13 +145,13 @@
     for (int idx = 0; idx < _children.count; idx++) {
         CGSize csize = fixSizes[idx].CGSizeValue;
         CGSize useSize = CGSizeNoZero(csize, CGSizeMake(expendWidth, limit.size.height));
-        CGFloat offsetY = limit.origin.y + SMRMainAlignOffset(useSize.height, maxHeight, _mainAlign);
+        CGFloat offsetY = limit.origin.y + SMRCrossAlignOffset(useSize.height, maxHeight, _crossAlign);
         CGRect frame = {{offsetX, offsetY}, useSize};
         offsetX += frame.size.width;
         fixdWidth += frame.size.width;
         [preframes addObject:[NSValue valueWithCGRect:frame]];
     }
-    CGFloat fixdOffsetX = SMRCrossAlignOffset(fixdWidth, limit.size.width, _crossAlign);
+    CGFloat fixdOffsetX = SMRMainAlignOffset(fixdWidth, limit.size.width, _mainAlign);
     for (int idx = 0; idx < _children.count; idx++) {
         SMRLayout *child = _children[idx];
         CGRect frame = CGRectOffset(preframes[idx].CGRectValue, fixdOffsetX, 0);
@@ -180,8 +180,8 @@
         } else {
             expendCount ++;
         }
-        if (fixChildHeight > limit.size.height) {
-            NSLog(@"warning:%@超出父布局限定宽, in:%@", child, self);
+        if (limit.size.height && (fixChildHeight > limit.size.height)) {
+            NSLog(@"warning:%@超出父布局限定高:%@, in:%@", child, @(limit.size.height), self);
         }
         maxWidth = MAX(maxWidth, csize.width);
     }
@@ -194,13 +194,13 @@
     for (int idx = 0; idx < _children.count; idx++) {
         CGSize csize = fixSizes[idx].CGSizeValue;
         CGSize useSize = CGSizeNoZero(csize, CGSizeMake(limit.size.width, expendHeight));
-        CGFloat offsetX = limit.origin.x + SMRMainAlignOffset(useSize.width, maxWidth, _mainAlign);
+        CGFloat offsetX = limit.origin.x + SMRCrossAlignOffset(useSize.width, maxWidth, _crossAlign);
         CGRect frame = {{offsetX, offsetY}, useSize};
         offsetY += frame.size.height;
         fixdHeight += frame.size.height;
         [preframes addObject:[NSValue valueWithCGRect:frame]];
     }
-    CGFloat fixdOffsetY = SMRCrossAlignOffset(fixdHeight, limit.size.height, _crossAlign);
+    CGFloat fixdOffsetY = SMRMainAlignOffset(fixdHeight, limit.size.height, _mainAlign);
     for (int idx = 0; idx < _children.count; idx++) {
         SMRLayout *child = _children[idx];
         CGRect frame = CGRectOffset(preframes[idx].CGRectValue, 0, fixdOffsetY);

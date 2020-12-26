@@ -48,6 +48,70 @@
     [self.view addSubview:view8];
     [self.view addSubview:view9];
     
+    
+    SMRLayout *layout =
+    box(^(SMRBox * _Nonnull set) {
+        set.view = self.view;
+        set.child = column(^(SMRColumn * _Nonnull set) {
+            set.children = @[
+                box(^(SMRBox * _Nonnull set) {
+                    set.height = 24;
+                }),
+                box(^(SMRBox * _Nonnull set) {
+                    set.height = 20;
+                }),
+                box(^(SMRBox * _Nonnull set) {
+                    set.height = 44;
+                    set.child = row(^(SMRRow * _Nonnull set) {
+                        set.crossAlign = SMRCrossAlignCenter;
+                        set.children = @[
+                            row(^(SMRRow * _Nonnull set) {
+                                set.children = @[
+                                    box(^(SMRBox * _Nonnull set) {
+                                        set.view = view1;
+                                        view1.text = @"返回";
+                                        [view1 sizeToFit];
+                                    }),
+                                    box(^(SMRBox * _Nonnull set) {
+                                        set.view = view2;
+                                        view2.text = @"关闭";
+                                        [view2 sizeToFit];
+                                    }),
+                                ];
+                            }),
+                            box(^(SMRBox * _Nonnull set) {
+                                set.align = SMRAlignCenter;
+                                set.view = view3;
+                                view3.text = @"爱的覅i看来是";
+                                [view3 sizeToFit];
+                            }),
+                            row(^(SMRRow * _Nonnull set) {
+                                set.children = @[
+                                    box(nil),
+                                    box(^(SMRBox * _Nonnull set) {
+                                        set.view = view4;
+                                        view4.text = @"收藏";
+                                        [view4 sizeToFit];
+                                    }),
+                                    box(^(SMRBox * _Nonnull set) {
+                                        set.view = view5;
+                                        view5.text = @"分享";
+                                        [view5 sizeToFit];
+                                    }),
+                                ];
+                            }),
+                        ];
+                    });
+                }),
+                box(^(SMRBox * _Nonnull set) {
+                    set.view = view6;
+                }),
+            ];
+        });
+    });
+    [layout setState];
+    
+    
 //    [box(^(SMRBox * _Nonnull set) {
 //        set.view = self.view;
 //        set.width = self.view.frame.size.width;
@@ -85,102 +149,102 @@
 //        }) setState];
 //    }
     
-    SMRLayout *layout1 =
-    box(^(SMRBox * _Nonnull set) {
-        set.view = self.view;
-        set.width = self.view.frame.size.width;
-        set.height = self.view.frame.size.height;
-        set.padding = UIEdgeInsetsMakeAll(10);
-        set.child = box(^(SMRBox *set) {
-            set.view = view1;
-            set.padding = UIEdgeInsetsMakeAll(10);
-            set.child = box(^(SMRBox *set) {
-                set.view = view2;
-                set.padding = UIEdgeInsetsMakeAll(10);
-                set.child = column(^(SMRColumn *set) {
-                    set.mainAlign = SMRMainAlignCenter;
-                    set.crossAlign = SMRCrossAlignCenter;
-                    set.children = @[
-                        box(^(SMRBox *set) {
-                            set.view = view5;
-                            set.width = 130;
-                            set.height = 80;
-                        }),
-                        box(^(SMRBox *set) {
-                            set.width = 10;
-                            set.height = 10;
-                        }),
-                        box(^(SMRBox *set) {
-                            set.view = view6;
-                            set.width = 70;
-                            set.height = 80;
-                        }),
-                        box(^(SMRBox *set) {
-                            set.view = view7;
-                            set.width = 20;
-                            set.height = 150;
-                        }),
-                        box(^(SMRBox *set) {
-                            set.view = view8;
-                            set.width = 30;
-                            set.height = 90;
-                        }),
-                    ];
-                });
-            });
-        });
-    });
-
-    SMRLayout *layout2 =
-    box(^(SMRBox * _Nonnull set) {
-        set.view = self.view;
-        set.width = self.view.frame.size.width;
-        set.height = self.view.frame.size.height;
-        set.padding = UIEdgeInsetsMakeAll(10);
-        set.child = box(^(SMRBox *set) {
-            set.view = view1;
-            set.padding = UIEdgeInsetsMakeAll(10);
-            set.child = box(^(SMRBox *set) {
-                set.view = view2;
-                set.padding = UIEdgeInsetsMakeAll(10);
-                set.child = row(^(SMRRow *set) {
-                    set.mainAlign = SMRMainAlignCenter;
-                    set.crossAlign = SMRCrossAlignCenter;
-                    set.children = @[
-                        box(^(SMRBox *set) {
-                            set.view = view5;
-                            set.width = 130;
-                            set.height = 80;
-                        }),
-                        box(^(SMRBox *set) {
-                            set.width = 10;
-                            set.height = 10;
-                        }),
-                        box(^(SMRBox *set) {
-                            set.view = view6;
-                            set.width = 70;
-                            set.height = 80;
-                        }),
-                        box(^(SMRBox *set) {
-                            set.view = view7;
-                            set.width = 20;
-                            set.height = 150;
-                        }),
-                        box(^(SMRBox *set) {
-                            set.view = view8;
-                            set.width = 30;
-                            set.height = 90;
-                        }),
-                    ];
-                });
-            });
-        });
-    });
-    
-    [layout1 setState];
-    [UIView animateWithDuration:1.5 delay:1 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:0 animations:^{
-        [layout2 setState];
-    } completion:nil];
+//    SMRLayout *layout1 =
+//    box(^(SMRBox * _Nonnull set) {
+//        set.view = self.view;
+//        set.width = self.view.frame.size.width;
+//        set.height = self.view.frame.size.height;
+//        set.padding = UIEdgeInsetsMakeAll(10);
+//        set.child = box(^(SMRBox *set) {
+//            set.view = view1;
+//            set.padding = UIEdgeInsetsMakeAll(10);
+//            set.child = box(^(SMRBox *set) {
+//                set.view = view2;
+//                set.padding = UIEdgeInsetsMakeAll(10);
+//                set.child = column(^(SMRColumn *set) {
+//                    set.mainAlign = SMRMainAlignCenter;
+//                    set.crossAlign = SMRCrossAlignCenter;
+//                    set.children = @[
+//                        box(^(SMRBox *set) {
+//                            set.view = view5;
+//                            set.width = 130;
+//                            set.height = 80;
+//                        }),
+//                        box(^(SMRBox *set) {
+//                            set.width = 10;
+//                            set.height = 10;
+//                        }),
+//                        box(^(SMRBox *set) {
+//                            set.view = view6;
+//                            set.width = 70;
+//                            set.height = 80;
+//                        }),
+//                        box(^(SMRBox *set) {
+//                            set.view = view7;
+//                            set.width = 20;
+//                            set.height = 150;
+//                        }),
+//                        box(^(SMRBox *set) {
+//                            set.view = view8;
+//                            set.width = 30;
+//                            set.height = 90;
+//                        }),
+//                    ];
+//                });
+//            });
+//        });
+//    });
+//
+//    SMRLayout *layout2 =
+//    box(^(SMRBox * _Nonnull set) {
+//        set.view = self.view;
+//        set.width = self.view.frame.size.width;
+//        set.height = self.view.frame.size.height;
+//        set.padding = UIEdgeInsetsMakeAll(10);
+//        set.child = box(^(SMRBox *set) {
+//            set.view = view1;
+//            set.padding = UIEdgeInsetsMakeAll(10);
+//            set.child = box(^(SMRBox *set) {
+//                set.view = view2;
+//                set.padding = UIEdgeInsetsMakeAll(10);
+//                set.child = row(^(SMRRow *set) {
+//                    set.mainAlign = SMRMainAlignCenter;
+//                    set.crossAlign = SMRCrossAlignCenter;
+//                    set.children = @[
+//                        box(^(SMRBox *set) {
+//                            set.view = view5;
+//                            set.width = 130;
+//                            set.height = 80;
+//                        }),
+//                        box(^(SMRBox *set) {
+//                            set.width = 10;
+//                            set.height = 10;
+//                        }),
+//                        box(^(SMRBox *set) {
+//                            set.view = view6;
+//                            set.width = 70;
+//                            set.height = 80;
+//                        }),
+//                        box(^(SMRBox *set) {
+//                            set.view = view7;
+//                            set.width = 20;
+//                            set.height = 150;
+//                        }),
+//                        box(^(SMRBox *set) {
+//                            set.view = view8;
+//                            set.width = 30;
+//                            set.height = 90;
+//                        }),
+//                    ];
+//                });
+//            });
+//        });
+//    });
+//
+//    [layout1 setState];
+//    [UIView animateWithDuration:1.5 delay:1 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:0 animations:^{
+//        [layout2 setState];
+//    } completion:nil];
     
 }
 
