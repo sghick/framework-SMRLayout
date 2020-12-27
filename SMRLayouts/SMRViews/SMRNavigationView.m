@@ -45,26 +45,35 @@
                 }),
                 Box(^(SMRBox * _Nonnull set) {
                     set.height = 44;
-                    set.child = Row(^(SMRRow * _Nonnull set) {
-                        set.children = @[
-                            Expand(^(SMRExpand * _Nonnull set) {
-                                set.child = Row(^(SMRRow * _Nonnull set) {
-                                    set.crossAlign = SMRCrossAlignCenter;
-                                    set.children = self.leadings.viewBoxes;
-                                });
-                            }),
-                            Box(^(SMRBox * _Nonnull set) {
-                                set.align = SMRAlignCenter;
-                                set.child = self.titleView.viewBox;
-                            }),
-                            Expand(^(SMRExpand * _Nonnull set) {
-                                set.child = Row(^(SMRRow * _Nonnull set) {
-                                    set.mainAlign = SMRMainAlignEnd;
-                                    set.crossAlign = SMRCrossAlignCenter;
-                                    set.children = self.actions.viewBoxes.reverseObjectEnumerator.allObjects;
-                                });
-                            }),
-                        ];
+                    set.child = Expand(^(SMRExpand * _Nonnull set) {
+                        set.child = Row(^(SMRRow * _Nonnull set) {
+                            set.children = @[
+                                Expand(^(SMRExpand * _Nonnull set) {
+                                    set.view = self.leadings.firstObject;
+                                }),
+                                self.titleView.viewBox,
+                                Expand(^(SMRExpand * _Nonnull set) {
+                                    set.view = self.actions.firstObject;
+                                }),
+    //                            Expand(^(SMRExpand * _Nonnull set) {
+    //                                set.child = Row(^(SMRRow * _Nonnull set) {
+    //                                    set.crossAlign = SMRCrossAlignCenter;
+    //                                    set.children = self.leadings.viewBoxes;
+    //                                });
+    //                            }),
+    //                            Box(^(SMRBox * _Nonnull set) {
+    //                                set.align = SMRAlignCenter;
+    //                                set.child = self.titleView.viewBox;
+    //                            }),
+    //                            Expand(^(SMRExpand * _Nonnull set) {
+    //                                set.child = Row(^(SMRRow * _Nonnull set) {
+    //                                    set.mainAlign = SMRMainAlignEnd;
+    //                                    set.crossAlign = SMRCrossAlignCenter;
+    //                                    set.children = self.actions.viewBoxes.reverseObjectEnumerator.allObjects;
+    //                                });
+    //                            }),
+                            ];
+                        });
                     });
                 }),
             ];
@@ -95,6 +104,7 @@
         label.textColor = [UIColor blackColor];
         label.font = [UIFont boldSystemFontOfSize:18];
         label.textAlignment = NSTextAlignmentCenter;
+        label.backgroundColor = [UIColor brownColor];
         self.titleView = label;
     }
     return self;

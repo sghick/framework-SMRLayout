@@ -101,7 +101,6 @@
         if (fitBounds.size.height && (csize.height > limit.size.height)) {
             NSLog(@"warning:%@超出父布局限定宽:%@, in:%@", _child, @(limit.size.height), self);
         }
-        
         CGSize useSize = CGSizeNoZero(csize, limit.size);
         CGRect frame = {limit.origin, useSize};
         CGPoint alignOffset = [self p_alignOffsetWithSize:useSize inSize:limit.size];
@@ -109,10 +108,9 @@
         limit = [_child layoutThatFitBounds:frame];
     }
     
-    limit = CGRectAddPadding(limit, _padding);
-    
     if (_view) {
-        CGSize viewSize = CGSizeNoZero(fitBounds.size, limit.size);
+        CGRect useBounds = CGRectAddPadding(limit, _padding);
+        CGSize viewSize = CGSizeNoZero(fitBounds.size, useBounds.size);
         CGRect frame = {fitBounds.origin, viewSize};
         _view.frame = frame;
         if ([_view isKindOfClass:UILabel.class]) {
@@ -160,16 +158,20 @@
 
 @implementation SMRExpand
 
+
 @end
 
 @implementation SMRRow
 
 - (CGSize)layoutThatFitSize:(CGSize)fitSize {
-    CGSize size = CGSizeZero;
+    CGFloat width = 0;
+    CGFloat height = 0;
     for (SMRLayout *layout in _children) {
-        size = CGSizeMaxSize(size, [layout layoutThatFitSize:fitSize]);
+        CGSize size = [layout layoutThatFitSize:fitSize];
+        width += size.width;
+        height = MAX(height, size.height);
     }
-    return size;
+    return CGSizeMake(width, height);
 }
 
 - (CGRect)layoutThatFitBounds:(CGRect)fitBounds {
@@ -182,9 +184,9 @@
         SMRLayout *child = _children[idx];
         CGSize csize = [child layoutThatFitSize:limit.size];
         [fixSizes addObject:[NSValue valueWithCGSize:csize]];
-        if (csize.width) {
+        if (csize.width && ![child isKindOfClass:SMRExpand.class]) {
             fixChildWidth += csize.width;
-        } else {//if ([child isKindOfClass:SMRExpand.class]) {
+        } else {
             expendCount ++;
         }
         if (limit.size.width && (fixChildWidth > limit.size.width)) {
@@ -220,11 +222,14 @@
 @implementation SMRColumn
 
 - (CGSize)layoutThatFitSize:(CGSize)fitSize {
-    CGSize size = CGSizeZero;
+    CGFloat width = 0;
+    CGFloat height = 0;
     for (SMRLayout *layout in _children) {
-        size = CGSizeMaxSize(size, [layout layoutThatFitSize:size]);
+        CGSize size = [layout layoutThatFitSize:fitSize];
+        width = MAX(width, size.width);
+        height += size.height;
     }
-    return size;
+    return CGSizeMake(width, height);
 }
 
 - (CGRect)layoutThatFitBounds:(CGRect)fitBounds {
@@ -237,9 +242,9 @@
         SMRLayout *child = _children[idx];
         CGSize csize =  [child layoutThatFitSize:fitBounds.size];
         [fixSizes addObject:[NSValue valueWithCGSize:csize]];
-        if (csize.height) {
+       if (csize.height && ![child isKindOfClass:SMRExpand.class]) {
             fixChildHeight += csize.height;
-        } else {//if ([child isKindOfClass:SMRExpand.class]) {
+        } else {
             expendCount ++;
         }
         if (limit.size.height && (fixChildHeight > limit.size.height)) {
