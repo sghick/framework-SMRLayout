@@ -1,5 +1,5 @@
 //
-//  SMRBox.h
+//  SMRLayout.h
 //  demoforlayout
 //
 //  Created by Tinswin on 2020/12/21.
@@ -103,15 +103,15 @@ UIKIT_STATIC_INLINE CGFloat SMRCrossAlignOffset(CGFloat x1, CGFloat x2, SMRCross
 
 @end
 
-UIKIT_STATIC_INLINE SMRBox * box(void (^ _Nullable block)(SMRBox *set)) {
+UIKIT_STATIC_INLINE SMRBox * Box(void (^ _Nullable block)(SMRBox *set)) {
     return [SMRBox layout:block];
 }
 
-UIKIT_STATIC_INLINE SMRRow * row(void (^ _Nullable block)(SMRRow *set)) {
+UIKIT_STATIC_INLINE SMRRow * Row(void (^ _Nullable block)(SMRRow *set)) {
     return [SMRRow layout:block];
 }
 
-UIKIT_STATIC_INLINE SMRColumn * column(void (^ _Nullable block)(SMRColumn *set)) {
+UIKIT_STATIC_INLINE SMRColumn * Column(void (^ _Nullable block)(SMRColumn *set)) {
     return [SMRColumn layout:block];
 }
 

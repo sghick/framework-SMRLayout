@@ -1,11 +1,11 @@
 //
-//  SMRBox.m
+//  SMRLayout.m
 //  demoforlayout
 //
 //  Created by Tinswin on 2020/12/21.
 //
 
-#import "SMRBox.h"
+#import "SMRLayout.h"
 #import "SMRGeometry.h"
 
 @implementation SMRLayout

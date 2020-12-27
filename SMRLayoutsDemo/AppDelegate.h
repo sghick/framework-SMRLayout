@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  demoforlayout
+//  SMRLayoutsDemo
 //
-//  Created by Tinswin on 2020/10/24.
+//  Created by Tinswin on 2020/12/27.
 //
 
 #import <UIKit/UIKit.h>

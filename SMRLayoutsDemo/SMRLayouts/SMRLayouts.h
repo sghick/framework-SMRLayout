@@ -8,7 +8,8 @@
 #ifndef SMRBoxing_h
 #define SMRBoxing_h
 
-#import "SMRBox.h"
 #import "SMRGeometry.h"
+#import "SMRLayouts.h"
+#import "SMRWidgets.h"
 
 #endif /* SMRBoxing_h */

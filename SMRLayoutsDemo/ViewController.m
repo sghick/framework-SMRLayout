@@ -6,7 +6,7 @@
 //
 
 #import "ViewController.h"
-#import "SMRBoxing/SMRBoxing.h"
+#import "SMRLayouts.h"
 
 @interface ViewController ()
 
@@ -50,66 +50,107 @@
     
     
     SMRLayout *layout =
-    box(^(SMRBox * _Nonnull set) {
+    Scaffod(^(SMRScaffod * _Nonnull set) {
         set.view = self.view;
-        set.child = column(^(SMRColumn * _Nonnull set) {
-            set.children = @[
-                box(^(SMRBox * _Nonnull set) {
-                    set.height = 24;
-                }),
-                box(^(SMRBox * _Nonnull set) {
-                    set.height = 20;
-                }),
-                box(^(SMRBox * _Nonnull set) {
-                    set.height = 44;
-                    set.child = row(^(SMRRow * _Nonnull set) {
-                        set.crossAlign = SMRCrossAlignCenter;
-                        set.children = @[
-                            row(^(SMRRow * _Nonnull set) {
-                                set.children = @[
-                                    box(^(SMRBox * _Nonnull set) {
-                                        set.view = view1;
-                                        view1.text = @"返回";
-                                        [view1 sizeToFit];
-                                    }),
-                                    box(^(SMRBox * _Nonnull set) {
-                                        set.view = view2;
-                                        view2.text = @"关闭";
-                                        [view2 sizeToFit];
-                                    }),
-                                ];
-                            }),
-                            box(^(SMRBox * _Nonnull set) {
-                                set.align = SMRAlignCenter;
-                                set.view = view3;
-                                view3.text = @"爱的覅i看来是";
-                                [view3 sizeToFit];
-                            }),
-                            row(^(SMRRow * _Nonnull set) {
-                                set.children = @[
-                                    box(nil),
-                                    box(^(SMRBox * _Nonnull set) {
-                                        set.view = view4;
-                                        view4.text = @"收藏";
-                                        [view4 sizeToFit];
-                                    }),
-                                    box(^(SMRBox * _Nonnull set) {
-                                        set.view = view5;
-                                        view5.text = @"分享";
-                                        [view5 sizeToFit];
-                                    }),
-                                ];
-                            }),
-                        ];
-                    });
-                }),
-                box(^(SMRBox * _Nonnull set) {
-                    set.view = view6;
-                }),
-            ];
+        set.appBar = AppBar(^(SMRAppBar * _Nonnull set) {
+//            set.leadings = @[
+//                Box(^(SMRBox * _Nonnull set) {
+//                    set.view = view1;
+//                    view1.text = @"返回";
+//                    [view1 sizeToFit];
+//                }),
+//                Box(^(SMRBox * _Nonnull set) {
+//                    set.view = view2;
+//                    view2.text = @"关闭";
+//                    [view2 sizeToFit];
+//                }),
+//            ];
+//            set.actions = @[
+//                Box(^(SMRBox * _Nonnull set) {
+//                    set.view = view4;
+//                    view4.text = @"收藏";
+//                    [view4 sizeToFit];
+//                }),
+//                Box(^(SMRBox * _Nonnull set) {
+//                    set.view = view5;
+//                    view5.text = @"分享";
+//                    [view5 sizeToFit];
+//                }),
+//            ];
+//            set.title = Box(^(SMRBox * _Nonnull set) {
+//                set.align = SMRAlignCenter;
+//                set.view = view3;
+//                view3.text = @"爱的覅i看来是";
+//                [view3 sizeToFit];
+//            });
+        });
+        set.body = Box(^(SMRBox * _Nonnull set) {
+            set.view = view7;
         });
     });
     [layout setState];
+    
+    
+//    Box(^(SMRBox * _Nonnull set) {
+//        set.view = self.view;
+//        set.child = Column(^(SMRColumn * _Nonnull set) {
+//            set.children = @[
+//                Box(^(SMRBox * _Nonnull set) {
+//                    set.height = 24;
+//                }),
+//                Box(^(SMRBox * _Nonnull set) {
+//                    set.height = 20;
+//                }),
+//                Box(^(SMRBox * _Nonnull set) {
+//                    set.height = 44;
+//                    set.child = Row(^(SMRRow * _Nonnull set) {
+//                        set.crossAlign = SMRCrossAlignCenter;
+//                        set.children = @[
+//                            Row(^(SMRRow * _Nonnull set) {
+//                                set.children = @[
+//                                    Box(^(SMRBox * _Nonnull set) {
+//                                        set.view = view1;
+//                                        view1.text = @"返回";
+//                                        [view1 sizeToFit];
+//                                    }),
+//                                    Box(^(SMRBox * _Nonnull set) {
+//                                        set.view = view2;
+//                                        view2.text = @"关闭";
+//                                        [view2 sizeToFit];
+//                                    }),
+//                                ];
+//                            }),
+//                            Box(^(SMRBox * _Nonnull set) {
+//                                set.align = SMRAlignCenter;
+//                                set.view = view3;
+//                                view3.text = @"爱的覅i看来是";
+//                                [view3 sizeToFit];
+//                            }),
+//                            Row(^(SMRRow * _Nonnull set) {
+//                                set.children = @[
+//                                    Box(nil),
+//                                    Box(^(SMRBox * _Nonnull set) {
+//                                        set.view = view4;
+//                                        view4.text = @"收藏";
+//                                        [view4 sizeToFit];
+//                                    }),
+//                                    Box(^(SMRBox * _Nonnull set) {
+//                                        set.view = view5;
+//                                        view5.text = @"分享";
+//                                        [view5 sizeToFit];
+//                                    }),
+//                                ];
+//                            }),
+//                        ];
+//                    });
+//                }),
+//                Box(^(SMRBox * _Nonnull set) {
+//                    set.view = view6;
+//                }),
+//            ];
+//        });
+//    });
+//    [layout setState];
     
     
 //    [box(^(SMRBox * _Nonnull set) {
