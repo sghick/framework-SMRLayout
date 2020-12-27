@@ -18,8 +18,8 @@
     return obj;
 }
 
-- (void)setState {
-    [self layoutWithinBounds:[self boundsThatFit]];
+- (CGSize)setState {
+    return [self layoutWithinBounds:[self boundsThatFit]];
 }
 
 - (CGSize)sizeThatFit {
@@ -56,8 +56,8 @@
     return nil;
 }
 
-- (void)setState {
-    [self.main setState];
+- (CGSize)setState {
+    return [self.main setState];
 }
 
 - (CGSize)sizeThatFit {

@@ -19,8 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SMRScaffod : SMRCombination
 
-@property (strong, nonatomic) SMRNavigation *navigation;
-@property (strong, nonatomic) SMRCombination *body;
+@property (strong, nonatomic) SMRLayout *navigation;
+@property (strong, nonatomic) SMRLayout *body;
 
 @end
 

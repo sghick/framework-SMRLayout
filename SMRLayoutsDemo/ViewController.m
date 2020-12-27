@@ -20,19 +20,32 @@
     
     self.view.backgroundColor = [UIColor darkGrayColor];
     
+    UIButton *back = [[UIButton alloc] init];
+    [back setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [back setTitle:@"<返回" forState:UIControlStateNormal];
+    [back sizeToFit];
+    
+    UIButton *share = [[UIButton alloc] init];
+    [share setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [share setTitle:@"分享" forState:UIControlStateNormal];
+    [share sizeToFit];
+    
     SMRNavigationView *navigationView = [[SMRNavigationView alloc] init];
+    navigationView.leadings = @[back];
+    navigationView.actions = @[share];
     navigationView.title = @"你好";
     
     UIView *bodyView = [[UIView alloc] init];
     bodyView.backgroundColor = [UIColor blueColor];
     
+    [self.view addSubview:navigationView];
+    [self.view addSubview:bodyView];
+    
     SMRLayout *layout =
     Scaffod(^(SMRScaffod * _Nonnull set) {
         set.view = self.view;
-        set.navigation = Navigation(^(SMRNavigation * _Nonnull set) {
-            set.view = navigationView;
-        });
-        set.body = bodyView.viewContainer;
+        set.navigation = navigationView.viewLayout;
+        set.body = bodyView.viewBox;
     });
     [layout setState];
     

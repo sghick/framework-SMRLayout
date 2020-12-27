@@ -6,7 +6,6 @@
 //
 
 #import "SMRNavigationView.h"
-#import "SMRLayout.h"
 
 @implementation SMRNavigationBar
 
@@ -21,6 +20,10 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
+//    [[self viewLayout] setState];
+}
+
+- (SMRLayout *)viewLayout {
     for (UIView *view in self.actions) {
         [self addSubview:view];
     }
@@ -33,33 +36,37 @@
     
     SMRLayout *layout =
     Box(^(SMRBox * _Nonnull set) {
+        set.width = [UIScreen mainScreen].bounds.size.width;
         set.view = self;
         set.child = Column(^(SMRColumn * _Nonnull set) {
             set.children = @[
                 Box(^(SMRBox * _Nonnull set) {
                     set.height = StatusBarHeight();
                 }),
-                Row(^(SMRRow * _Nonnull set) {
-                    set.children = @[
-                        Row(^(SMRRow * _Nonnull set) {
-                            set.crossAlign = SMRCrossAlignCenter;
-                            set.children = self.leadings.viewBoxes;
-                        }),
-                        Box(^(SMRBox * _Nonnull set) {
-                            set.align = SMRAlignCenter;
-                            set.child = self.titleView.viewBox;
-                        }),
-                        Row(^(SMRRow * _Nonnull set) {
-                            set.mainAlign = SMRMainAlignEnd;
-                            set.crossAlign = SMRCrossAlignCenter;
-                            set.children = self.actions.viewBoxes.reverseObjectEnumerator.allObjects;
-                        }),
-                    ];
+                Box(^(SMRBox * _Nonnull set) {
+                    set.height = 44;
+                    set.child = Row(^(SMRRow * _Nonnull set) {
+                        set.children = @[
+                            Row(^(SMRRow * _Nonnull set) {
+                                set.crossAlign = SMRCrossAlignCenter;
+                                set.children = self.leadings.viewBoxes;
+                            }),
+                            Box(^(SMRBox * _Nonnull set) {
+                                set.align = SMRAlignCenter;
+                                set.child = self.titleView.viewBox;
+                            }),
+                            Row(^(SMRRow * _Nonnull set) {
+                                set.mainAlign = SMRMainAlignEnd;
+                                set.crossAlign = SMRCrossAlignCenter;
+                                set.children = self.actions.viewBoxes.reverseObjectEnumerator.allObjects;
+                            }),
+                        ];
+                    });
                 }),
             ];
         });
     });
-    [layout setState];
+    return layout;
 }
 
 #pragma mark - Getters

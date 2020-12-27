@@ -61,7 +61,7 @@ UIKIT_STATIC_INLINE CGFloat SMRCrossAlignOffset(CGFloat x1, CGFloat x2, SMRCross
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)layout:(void (^)(__kindof SMRLayout *set))setting;
 
-- (void)setState;
+- (CGSize)setState;
 
 - (CGSize)sizeThatFit;
 - (CGRect)boundsThatFit;
@@ -77,6 +77,13 @@ UIKIT_STATIC_INLINE CGFloat SMRCrossAlignOffset(CGFloat x1, CGFloat x2, SMRCross
 
 /** 子类重写返回一个代理Layout */
 - (SMRLayout *)mainLayoutAfterInit;
+
+@end
+
+/** view单独布局需要遵循的协议 */
+@protocol SMRViewLayout <NSObject>
+
+- (SMRLayout *)viewLayout;
 
 @end
 

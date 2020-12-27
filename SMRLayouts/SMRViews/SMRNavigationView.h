@@ -6,10 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SMRLayout.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SMRNavigationBar : UIView
+@interface SMRNavigationBar : UIView<SMRViewLayout>
 
 @property (strong, nonatomic) UIView *contentView;
 @property (strong, nonatomic) NSArray<UIView *> *leadings;

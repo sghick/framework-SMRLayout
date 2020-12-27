@@ -31,12 +31,10 @@
 
 - (SMRLayout *)mainLayoutAfterInit {
     NSMutableArray *children = [NSMutableArray array];
-    if (self.navigation.view) {
-        [self.view addSubview:self.navigation.view];
+    if (self.navigation) {
         [children addObject:self.navigation];
     }
-    if (self.body.view) {
-        [self.view addSubview:self.body.view];
+    if (self.body) {
         [children addObject:self.body];
     }
     
