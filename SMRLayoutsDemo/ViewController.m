@@ -33,21 +33,65 @@
     SMRNavigationView *navigationView = [[SMRNavigationView alloc] init];
     navigationView.leadings = @[back];
     navigationView.actions = @[share];
-    navigationView.title = @"你好";
+    navigationView.title = @"你好老板这是一个超级长的标题啊咱们自己";
     
     UIView *bodyView = [[UIView alloc] init];
     bodyView.backgroundColor = [UIColor blueColor];
     
+    UIView *testView = [[UIView alloc] init];
+    testView.backgroundColor = [UIColor redColor];
+    
     [self.view addSubview:navigationView];
     [self.view addSubview:bodyView];
+    [self.view addSubview:testView];
     
     SMRLayout *layout =
-    Scaffod(^(SMRScaffod * _Nonnull set) {
+    Box(^(SMRBox * _Nonnull set) {
         set.view = self.view;
-        set.navigation = navigationView.viewLayout;
-        set.body = bodyView.viewBox;
+        set.child = Column(^(SMRColumn * _Nonnull set) {
+            set.padding = UIEdgeInsetsMakeAll(20);
+            set.children = @[
+                Row(^(SMRRow * _Nonnull set) {
+                    set.children = @[
+                        Box(^(SMRBox * _Nonnull set) {
+                            set.view = bodyView;
+                        }),
+                        Box(^(SMRBox * _Nonnull set) {
+                            set.view = testView;
+                        }),
+                    ];
+                }),
+//                Row(^(SMRRow * _Nonnull set) {
+//                    set.children = @[
+//                        Box(^(SMRBox * _Nonnull set) {
+//                            set.width = 88;
+//                            set.height = 88;
+//                            set.view = navigationView;
+//                        }),
+//                        Box(^(SMRBox * _Nonnull set) {
+//                            set.width = 88;
+//                            set.height = 88;
+//                            set.view = bodyView;
+//                        }),
+//                        Box(^(SMRBox * _Nonnull set) {
+//                            set.width = 88;
+//                            set.height = 88;
+//                            set.view = testView;
+//                        }),
+//                    ];
+//                }),
+            ];
+        });
     });
     [layout setState];
+    
+//    SMRLayout *layout =
+//    Scaffod(^(SMRScaffod * _Nonnull set) {
+//        set.view = self.view;
+//        set.navigation = navigationView.viewLayout;
+//        set.body = bodyView.viewBox;
+//    });
+//    [layout setState];
     
     
 //    Box(^(SMRBox * _Nonnull set) {

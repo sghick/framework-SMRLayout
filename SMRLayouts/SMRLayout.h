@@ -61,12 +61,13 @@ UIKIT_STATIC_INLINE CGFloat SMRCrossAlignOffset(CGFloat x1, CGFloat x2, SMRCross
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)layout:(void (^)(__kindof SMRLayout *set))setting;
 
-- (CGSize)setState;
+- (CGRect)setState;
 
-- (CGSize)sizeThatFit;
-- (CGRect)boundsThatFit;
+- (CGSize)sizeOfLayout;
+- (CGRect)boundsOfLayout;
 
-- (CGSize)layoutWithinBounds:(CGRect)bounds;
+- (CGSize)layoutThatFitSize:(CGSize)fitSize;
+- (CGRect)layoutThatFitBounds:(CGRect)fitBounds;
 
 @end
 
@@ -100,6 +101,10 @@ UIKIT_STATIC_INLINE CGFloat SMRCrossAlignOffset(CGFloat x1, CGFloat x2, SMRCross
 
 @end
 
+@interface SMRExpand : SMRBox
+
+@end
+
 @interface SMRRow : SMRLayout
 
 @property (assign, nonatomic) SMRMainAlign mainAlign;
@@ -122,6 +127,10 @@ UIKIT_STATIC_INLINE CGFloat SMRCrossAlignOffset(CGFloat x1, CGFloat x2, SMRCross
 
 UIKIT_STATIC_INLINE SMRBox * Box(void (^ _Nullable block)(SMRBox *set)) {
     return [SMRBox layout:block];
+}
+
+UIKIT_STATIC_INLINE SMRExpand * Expand(void (^ _Nullable block)(SMRExpand *set)) {
+    return [SMRExpand layout:block];
 }
 
 UIKIT_STATIC_INLINE SMRRow * Row(void (^ _Nullable block)(SMRRow *set)) {

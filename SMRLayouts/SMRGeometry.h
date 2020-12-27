@@ -54,9 +54,9 @@ CG_INLINE CGPoint CGPointInPadding(CGPoint point, UIEdgeInsets padding) {
 }
 
 CG_INLINE CGSize CGSizeInPadding(CGSize size, UIEdgeInsets padding) {
-    return CGSizeMake(size.width - padding.left - padding.right,
-                      size.height - padding.top - padding.bottom);
-    
+    CGFloat width = size.width - padding.left - padding.right;
+    CGFloat height = size.height - padding.top - padding.bottom;
+    return CGSizeMake((width > 0) ? width : size.width, (height > 0) ? height : size.height);
 }
 
 CG_INLINE CGRect CGRectInPadding(CGRect rect, UIEdgeInsets padding) {
@@ -65,8 +65,37 @@ CG_INLINE CGRect CGRectInPadding(CGRect rect, UIEdgeInsets padding) {
     return CGRectMake(point.x, point.y, size.width, size.height);
 }
 
+CG_INLINE CGPoint CGPointAddPadding(CGPoint point, UIEdgeInsets padding) {
+    return CGPointMake(point.x + padding.left, point.y + padding.top);
+}
+
+CG_INLINE CGSize CGSizeAddPadding(CGSize size, UIEdgeInsets padding) {
+    CGFloat width = size.width + padding.left + padding.right;
+    CGFloat height = size.height + padding.top + padding.bottom;
+    return CGSizeMake(width, height);
+    
+}
+
+CG_INLINE CGRect CGRectAddPadding(CGRect rect, UIEdgeInsets padding) {
+    CGPoint point = CGPointAddPadding(rect.origin, padding);
+    CGSize size = CGSizeAddPadding(rect.size, padding);
+    return CGRectMake(point.x, point.y, size.width, size.height);
+}
+
 CG_INLINE CGSize CGSizeNoZero(CGSize size1, CGSize size2) {
     return CGSizeMake(size1.width ?: size2.width, size1.height ?: size2.height);
+}
+
+CG_INLINE CGSize CGSizeMaxSize(CGSize size1, CGSize size2) {
+    return CGSizeMake(MAX(size1.width, size2.width), MAX(size1.height, size2.height));
+}
+
+CG_INLINE CGSize CGSizeMaxWidth(CGSize size1, CGFloat sizeWidth) {
+    return CGSizeMake(MAX(size1.width, sizeWidth), size1.height);
+}
+
+CG_INLINE CGSize CGSizeMaxHeight(CGSize size1, CGFloat sizeHeight) {
+    return CGSizeMake(size1.width, MAX(size1.height, sizeHeight));
 }
 
 CG_INLINE CGSize CGSizeAdd(CGSize size1, CGSize size2) {
