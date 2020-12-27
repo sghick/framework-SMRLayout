@@ -131,4 +131,10 @@ UIKIT_STATIC_INLINE SMRColumn * Column(void (^ _Nullable block)(SMRColumn *set))
 
 @end
 
+@interface NSArray (SMRLayout)
+
+- (NSArray<SMRBox *> *)viewBoxes;
+
+@end
+
 NS_ASSUME_NONNULL_END

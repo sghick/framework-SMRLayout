@@ -154,7 +154,6 @@
     NSInteger expendCount = 0;
     CGFloat expendWidth = 0;
     CGFloat fixChildWidth = 0;
-    CGFloat maxHeight = 0;
     for (int idx = 0; idx < _children.count; idx++) {
         SMRLayout *child = _children[idx];
         CGSize csize = [child sizeThatFit];
@@ -167,7 +166,6 @@
         if (limit.size.width && (fixChildWidth > limit.size.width)) {
             NSLog(@"warning:%@超出父布局限定宽:%@, in:%@", child, @(limit.size.width), self);
         }
-        maxHeight = MAX(maxHeight, csize.height ?: limit.size.height);
     }
     if (expendCount) {
         expendWidth = (limit.size.width - fixChildWidth)/expendCount;
@@ -178,7 +176,7 @@
     for (int idx = 0; idx < _children.count; idx++) {
         CGSize csize = fixSizes[idx].CGSizeValue;
         CGSize useSize = CGSizeNoZero(csize, CGSizeMake(expendWidth, limit.size.height));
-        CGFloat offsetY = limit.origin.y + SMRCrossAlignOffset(useSize.height, maxHeight, _crossAlign);
+        CGFloat offsetY = limit.origin.y + SMRCrossAlignOffset(useSize.height, limit.size.height, _crossAlign);
         CGRect frame = {{offsetX, offsetY}, useSize};
         offsetX += frame.size.width;
         fixdWidth += frame.size.width;
@@ -203,7 +201,6 @@
     NSInteger expendCount = 0;
     CGFloat expendHeight = 0;
     CGFloat fixChildHeight = 0;
-    CGFloat maxWidth = 0;
     for (int idx = 0; idx < _children.count; idx++) {
         SMRLayout *child = _children[idx];
         CGSize csize = [child sizeThatFit];
@@ -216,7 +213,6 @@
         if (limit.size.height && (fixChildHeight > limit.size.height)) {
             NSLog(@"warning:%@超出父布局限定高:%@, in:%@", child, @(limit.size.height), self);
         }
-        maxWidth = MAX(maxWidth, csize.width ?: limit.size.width);
     }
     if (expendCount) {
         expendHeight = (limit.size.height - fixChildHeight)/expendCount;
@@ -227,7 +223,7 @@
     for (int idx = 0; idx < _children.count; idx++) {
         CGSize csize = fixSizes[idx].CGSizeValue;
         CGSize useSize = CGSizeNoZero(csize, CGSizeMake(limit.size.width, expendHeight));
-        CGFloat offsetX = limit.origin.x + SMRCrossAlignOffset(useSize.width, maxWidth, _crossAlign);
+        CGFloat offsetX = limit.origin.x + SMRCrossAlignOffset(useSize.width, limit.size.width, _crossAlign);
         CGRect frame = {{offsetX, offsetY}, useSize};
         offsetY += frame.size.height;
         fixdHeight += frame.size.height;
@@ -250,6 +246,20 @@
     return Box(^(SMRBox * _Nonnull set) {
         set.view = self;
     });
+}
+
+@end
+
+@implementation NSArray (SMRLayout)
+
+- (NSArray<SMRBox *> *)viewBoxes {
+    NSMutableArray *boxes = [NSMutableArray array];
+    for (UIView *view in self) {
+        if ([view isKindOfClass:UIView.class]) {
+            [boxes addObject:view.viewBox];
+        }
+    }
+    return boxes;
 }
 
 @end

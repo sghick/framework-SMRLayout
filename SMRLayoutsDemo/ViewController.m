@@ -19,17 +19,17 @@
     
     self.view.backgroundColor = [UIColor darkGrayColor];
     
-    SMRAppBarView *appBarView = [[SMRAppBarView alloc] init];
-    appBarView.backgroundColor = [UIColor redColor];
+    SMRNavigationBar *navigationView = [[SMRNavigationBar alloc] init];
+    navigationView.title = @"你好";
     
     UIView *bodyView = [[UIView alloc] init];
-    bodyView.backgroundColor = [UIColor whiteColor];
+    bodyView.backgroundColor = [UIColor blueColor];
     
     SMRLayout *layout =
     Scaffod(^(SMRScaffod * _Nonnull set) {
         set.view = self.view;
         set.appBar = AppBar(^(SMRAppBar * _Nonnull set) {
-            set.view = appBarView;
+            set.view = navigationView;
         });
         set.body = bodyView.viewContainer;
     });
