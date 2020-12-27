@@ -1,5 +1,5 @@
 //
-//  SMRAppBarView.h
+//  SMRNavigationView.h
 //  SMRLayoutsDemo
 //
 //  Created by Tinswin on 2020/12/27.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SMRAppBarView : UIView
+@interface SMRNavigationBar : UIView
 
 @property (strong, nonatomic) UIView *contentView;
 @property (strong, nonatomic) NSArray<UIView *> *leadings;
@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface SMRNavigationBar : SMRAppBarView
+@interface SMRNavigationView : SMRNavigationBar
 
 @property (strong, nonatomic) NSString *title;
 

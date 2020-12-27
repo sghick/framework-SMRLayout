@@ -14,9 +14,9 @@
 		1D482556259820C8001E4D74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D482555259820C8001E4D74 /* Assets.xcassets */; };
 		1D482559259820C8001E4D74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D482557259820C8001E4D74 /* LaunchScreen.storyboard */; };
 		1D48255C259820C8001E4D74 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D48255B259820C8001E4D74 /* main.m */; };
-		1D48256C25982101001E4D74 /* SMRScaffod.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D48256725982101001E4D74 /* SMRScaffod.m */; };
-		1D48256D25982101001E4D74 /* SMRLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D48256925982101001E4D74 /* SMRLayout.m */; };
-		1D6B63DB259851740022576A /* SMRAppBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6B63DA259851740022576A /* SMRAppBarView.m */; };
+		1DA97C3D25987EA2007A056D /* SMRScaffod.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA97C3425987EA2007A056D /* SMRScaffod.m */; };
+		1DA97C3E25987EA2007A056D /* SMRLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA97C3625987EA2007A056D /* SMRLayout.m */; };
+		1DA97C3F25987EA2007A056D /* SMRNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA97C3A25987EA2007A056D /* SMRNavigationView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,16 +32,16 @@
 		1D482558259820C8001E4D74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D48255A259820C8001E4D74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D48255B259820C8001E4D74 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		1D48256425982101001E4D74 /* SMRGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRGeometry.h; sourceTree = "<group>"; };
-		1D48256625982101001E4D74 /* SMRScaffod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRScaffod.h; sourceTree = "<group>"; };
-		1D48256725982101001E4D74 /* SMRScaffod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRScaffod.m; sourceTree = "<group>"; };
-		1D48256825982101001E4D74 /* SMRWidgets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRWidgets.h; sourceTree = "<group>"; };
-		1D48256925982101001E4D74 /* SMRLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRLayout.m; sourceTree = "<group>"; };
-		1D48256A25982101001E4D74 /* SMRLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRLayout.h; sourceTree = "<group>"; };
-		1D48256B25982101001E4D74 /* SMRLayouts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRLayouts.h; sourceTree = "<group>"; };
-		1D6B63D9259851740022576A /* SMRAppBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMRAppBarView.h; sourceTree = "<group>"; };
-		1D6B63DA259851740022576A /* SMRAppBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMRAppBarView.m; sourceTree = "<group>"; };
-		1D6B63DE259851B30022576A /* SMRViews.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMRViews.h; sourceTree = "<group>"; };
+		1DA97C3125987EA2007A056D /* SMRGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRGeometry.h; sourceTree = "<group>"; };
+		1DA97C3325987EA2007A056D /* SMRScaffod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRScaffod.h; sourceTree = "<group>"; };
+		1DA97C3425987EA2007A056D /* SMRScaffod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRScaffod.m; sourceTree = "<group>"; };
+		1DA97C3525987EA2007A056D /* SMRWidgets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRWidgets.h; sourceTree = "<group>"; };
+		1DA97C3625987EA2007A056D /* SMRLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRLayout.m; sourceTree = "<group>"; };
+		1DA97C3825987EA2007A056D /* SMRViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRViews.h; sourceTree = "<group>"; };
+		1DA97C3925987EA2007A056D /* SMRNavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRNavigationView.h; sourceTree = "<group>"; };
+		1DA97C3A25987EA2007A056D /* SMRNavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRNavigationView.m; sourceTree = "<group>"; };
+		1DA97C3B25987EA2007A056D /* SMRLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRLayout.h; sourceTree = "<group>"; };
+		1DA97C3C25987EA2007A056D /* SMRLayouts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRLayouts.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +58,7 @@
 		1D48253D259820C6001E4D74 = {
 			isa = PBXGroup;
 			children = (
-				1D48256325982101001E4D74 /* SMRLayouts */,
+				1DA97C3025987EA2007A056D /* SMRLayouts */,
 				1D482548259820C7001E4D74 /* SMRLayoutsDemo */,
 				1D482547259820C7001E4D74 /* Products */,
 			);
@@ -90,35 +90,35 @@
 			path = SMRLayoutsDemo;
 			sourceTree = "<group>";
 		};
-		1D48256325982101001E4D74 /* SMRLayouts */ = {
+		1DA97C3025987EA2007A056D /* SMRLayouts */ = {
 			isa = PBXGroup;
 			children = (
-				1D48256B25982101001E4D74 /* SMRLayouts.h */,
-				1D48256425982101001E4D74 /* SMRGeometry.h */,
-				1D48256A25982101001E4D74 /* SMRLayout.h */,
-				1D48256925982101001E4D74 /* SMRLayout.m */,
-				1D6B63D8259851640022576A /* SMRViews */,
-				1D48256525982101001E4D74 /* SMRWidgets */,
+				1DA97C3125987EA2007A056D /* SMRGeometry.h */,
+				1DA97C3B25987EA2007A056D /* SMRLayout.h */,
+				1DA97C3625987EA2007A056D /* SMRLayout.m */,
+				1DA97C3C25987EA2007A056D /* SMRLayouts.h */,
+				1DA97C3725987EA2007A056D /* SMRViews */,
+				1DA97C3225987EA2007A056D /* SMRWidgets */,
 			);
 			path = SMRLayouts;
 			sourceTree = "<group>";
 		};
-		1D48256525982101001E4D74 /* SMRWidgets */ = {
+		1DA97C3225987EA2007A056D /* SMRWidgets */ = {
 			isa = PBXGroup;
 			children = (
-				1D48256625982101001E4D74 /* SMRScaffod.h */,
-				1D48256725982101001E4D74 /* SMRScaffod.m */,
-				1D48256825982101001E4D74 /* SMRWidgets.h */,
+				1DA97C3325987EA2007A056D /* SMRScaffod.h */,
+				1DA97C3425987EA2007A056D /* SMRScaffod.m */,
+				1DA97C3525987EA2007A056D /* SMRWidgets.h */,
 			);
 			path = SMRWidgets;
 			sourceTree = "<group>";
 		};
-		1D6B63D8259851640022576A /* SMRViews */ = {
+		1DA97C3725987EA2007A056D /* SMRViews */ = {
 			isa = PBXGroup;
 			children = (
-				1D6B63D9259851740022576A /* SMRAppBarView.h */,
-				1D6B63DA259851740022576A /* SMRAppBarView.m */,
-				1D6B63DE259851B30022576A /* SMRViews.h */,
+				1DA97C3925987EA2007A056D /* SMRNavigationView.h */,
+				1DA97C3A25987EA2007A056D /* SMRNavigationView.m */,
+				1DA97C3825987EA2007A056D /* SMRViews.h */,
 			);
 			path = SMRViews;
 			sourceTree = "<group>";
@@ -192,12 +192,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D48256C25982101001E4D74 /* SMRScaffod.m in Sources */,
+				1DA97C3F25987EA2007A056D /* SMRNavigationView.m in Sources */,
+				1DA97C3D25987EA2007A056D /* SMRScaffod.m in Sources */,
 				1D482551259820C7001E4D74 /* ViewController.m in Sources */,
 				1D48254B259820C7001E4D74 /* AppDelegate.m in Sources */,
 				1D48255C259820C8001E4D74 /* main.m in Sources */,
-				1D6B63DB259851740022576A /* SMRAppBarView.m in Sources */,
-				1D48256D25982101001E4D74 /* SMRLayout.m in Sources */,
+				1DA97C3E25987EA2007A056D /* SMRLayout.m in Sources */,
 				1D48254E259820C7001E4D74 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

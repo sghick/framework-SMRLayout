@@ -15,7 +15,7 @@
 
 @end
 
-@implementation SMRAppBar
+@implementation SMRNavigation
 
 - (SMRLayout *)mainLayoutAfterInit {
     return Box(^(SMRBox * _Nonnull set) {
@@ -31,9 +31,9 @@
 
 - (SMRLayout *)mainLayoutAfterInit {
     NSMutableArray *children = [NSMutableArray array];
-    if (self.appBar.view) {
-        [self.view addSubview:self.appBar.view];
-        [children addObject:self.appBar];
+    if (self.navigation.view) {
+        [self.view addSubview:self.navigation.view];
+        [children addObject:self.navigation];
     }
     if (self.body.view) {
         [self.view addSubview:self.body.view];

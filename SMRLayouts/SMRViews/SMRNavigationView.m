@@ -1,14 +1,14 @@
 //
-//  SMRAppBarView.m
+//  SMRNavigationView.m
 //  SMRLayoutsDemo
 //
 //  Created by Tinswin on 2020/12/27.
 //
 
-#import "SMRAppBarView.h"
+#import "SMRNavigationView.h"
 #import "SMRLayout.h"
 
-@implementation SMRAppBarView
+@implementation SMRNavigationBar
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -73,7 +73,7 @@
 
 @end
 
-@implementation SMRNavigationBar
+@implementation SMRNavigationView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];

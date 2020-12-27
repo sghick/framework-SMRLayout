@@ -8,6 +8,6 @@
 #ifndef SMRViews_h
 #define SMRViews_h
 
-#import "SMRAppBarView.h"
+#import "SMRNavigationView.h"
 
 #endif /* SMRViews_h */

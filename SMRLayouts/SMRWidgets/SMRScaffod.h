@@ -13,13 +13,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface SMRAppBar : SMRCombination
+@interface SMRNavigation : SMRCombination
 
 @end
 
 @interface SMRScaffod : SMRCombination
 
-@property (strong, nonatomic) SMRAppBar *appBar;
+@property (strong, nonatomic) SMRNavigation *navigation;
 @property (strong, nonatomic) SMRCombination *body;
 
 @end
@@ -34,8 +34,8 @@ UIKIT_STATIC_INLINE SMRContainer * Container(void (^ _Nullable block)(SMRContain
     return [SMRContainer layout:block];
 }
 
-UIKIT_STATIC_INLINE SMRAppBar * AppBar(void (^ _Nullable block)(SMRAppBar *set)) {
-    return [SMRAppBar layout:block];
+UIKIT_STATIC_INLINE SMRNavigation * Navigation(void (^ _Nullable block)(SMRNavigation *set)) {
+    return [SMRNavigation layout:block];
 }
 
 UIKIT_STATIC_INLINE SMRScaffod * Scaffod(void (^ _Nullable block)(SMRScaffod *set)) {

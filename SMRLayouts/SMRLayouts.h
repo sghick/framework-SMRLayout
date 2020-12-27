@@ -9,6 +9,5 @@
 #define SMRBoxing_h
 
 #import "SMRWidgets.h"
-#import "SMRViews.h"
 
 #endif /* SMRBoxing_h */

@@ -7,6 +7,7 @@
 
 #import "ViewController.h"
 #import "SMRLayouts.h"
+#import "SMRViews.h"
 
 @interface ViewController ()
 
@@ -19,7 +20,7 @@
     
     self.view.backgroundColor = [UIColor darkGrayColor];
     
-    SMRNavigationBar *navigationView = [[SMRNavigationBar alloc] init];
+    SMRNavigationView *navigationView = [[SMRNavigationView alloc] init];
     navigationView.title = @"你好";
     
     UIView *bodyView = [[UIView alloc] init];
@@ -28,7 +29,7 @@
     SMRLayout *layout =
     Scaffod(^(SMRScaffod * _Nonnull set) {
         set.view = self.view;
-        set.appBar = AppBar(^(SMRAppBar * _Nonnull set) {
+        set.navigation = Navigation(^(SMRNavigation * _Nonnull set) {
             set.view = navigationView;
         });
         set.body = bodyView.viewContainer;
