@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SMRGeometry.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -57,8 +58,6 @@ UIKIT_STATIC_INLINE CGFloat SMRCrossAlignOffset(CGFloat x1, CGFloat x2, SMRCross
 
 @interface SMRLayout : NSObject
 
-@property (assign, nonatomic, readonly) BOOL dirty;
-
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)layout:(void (^)(__kindof SMRLayout *set))setting;
 
@@ -73,6 +72,8 @@ UIKIT_STATIC_INLINE CGFloat SMRCrossAlignOffset(CGFloat x1, CGFloat x2, SMRCross
 
 /** 必须继承,不能单独使用 */
 @interface SMRCombination : SMRLayout
+
+@property (strong, nonatomic) UIView *view;
 
 /** 子类重写返回一个代理Layout */
 - (SMRLayout *)mainLayoutAfterInit;
@@ -123,5 +124,11 @@ UIKIT_STATIC_INLINE SMRRow * Row(void (^ _Nullable block)(SMRRow *set)) {
 UIKIT_STATIC_INLINE SMRColumn * Column(void (^ _Nullable block)(SMRColumn *set)) {
     return [SMRColumn layout:block];
 }
+
+@interface UIView (SMRLayout)
+
+- (SMRBox *)viewBox;
+
+@end
 
 NS_ASSUME_NONNULL_END

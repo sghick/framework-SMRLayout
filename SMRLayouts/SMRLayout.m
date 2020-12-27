@@ -18,17 +18,8 @@
     return obj;
 }
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        _dirty = YES;
-    }
-    return self;
-}
-
 - (void)setState {
     [self layoutWithinBounds:[self boundsThatFit]];
-    _dirty = NO;
 }
 
 - (CGSize)sizeThatFit {
@@ -85,7 +76,8 @@
 @implementation SMRBox
 
 - (CGSize)sizeThatFit {
-    return CGSizeMake(_width ?: _view.frame.size.width, _height ?: _view.frame.size.height);
+    return CGSizeMake(_width ?: _view.frame.size.width,
+                      _height ?: _view.frame.size.height);
 }
 
 - (CGSize)layoutWithinBounds:(CGRect)bounds {
@@ -111,6 +103,11 @@
         CGSize viewSize = CGSizeNoZero(bounds.size, autoSize);
         CGRect frame = {bounds.origin, viewSize};
         _view.frame = frame;
+        if ([_view isKindOfClass:UILabel.class]) {
+            NSLog(@"label:%@", ((UILabel *)_view).text);
+        } else {
+            NSLog(@"view:%@", _view);
+        }
     }
     return autoSize;
 }
@@ -243,6 +240,16 @@
         [child layoutWithinBounds:frame];
     }
     return bounds.size;
+}
+
+@end
+
+@implementation UIView (SMRLayout)
+
+- (SMRBox *)viewBox {
+    return Box(^(SMRBox * _Nonnull set) {
+        set.view = self;
+    });
 }
 
 @end

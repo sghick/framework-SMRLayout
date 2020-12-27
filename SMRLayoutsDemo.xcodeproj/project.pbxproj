@@ -16,6 +16,7 @@
 		1D48255C259820C8001E4D74 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D48255B259820C8001E4D74 /* main.m */; };
 		1D48256C25982101001E4D74 /* SMRScaffod.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D48256725982101001E4D74 /* SMRScaffod.m */; };
 		1D48256D25982101001E4D74 /* SMRLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D48256925982101001E4D74 /* SMRLayout.m */; };
+		1D6B63DB259851740022576A /* SMRAppBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6B63DA259851740022576A /* SMRAppBarView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,9 @@
 		1D48256925982101001E4D74 /* SMRLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRLayout.m; sourceTree = "<group>"; };
 		1D48256A25982101001E4D74 /* SMRLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRLayout.h; sourceTree = "<group>"; };
 		1D48256B25982101001E4D74 /* SMRLayouts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRLayouts.h; sourceTree = "<group>"; };
+		1D6B63D9259851740022576A /* SMRAppBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMRAppBarView.h; sourceTree = "<group>"; };
+		1D6B63DA259851740022576A /* SMRAppBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMRAppBarView.m; sourceTree = "<group>"; };
+		1D6B63DE259851B30022576A /* SMRViews.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMRViews.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 		1D48253D259820C6001E4D74 = {
 			isa = PBXGroup;
 			children = (
+				1D48256325982101001E4D74 /* SMRLayouts */,
 				1D482548259820C7001E4D74 /* SMRLayoutsDemo */,
 				1D482547259820C7001E4D74 /* Products */,
 			);
@@ -76,7 +81,6 @@
 				1D48254D259820C7001E4D74 /* SceneDelegate.m */,
 				1D48254F259820C7001E4D74 /* ViewController.h */,
 				1D482550259820C7001E4D74 /* ViewController.m */,
-				1D48256325982101001E4D74 /* SMRLayouts */,
 				1D482552259820C7001E4D74 /* Main.storyboard */,
 				1D482555259820C8001E4D74 /* Assets.xcassets */,
 				1D482557259820C8001E4D74 /* LaunchScreen.storyboard */,
@@ -93,6 +97,7 @@
 				1D48256425982101001E4D74 /* SMRGeometry.h */,
 				1D48256A25982101001E4D74 /* SMRLayout.h */,
 				1D48256925982101001E4D74 /* SMRLayout.m */,
+				1D6B63D8259851640022576A /* SMRViews */,
 				1D48256525982101001E4D74 /* SMRWidgets */,
 			);
 			path = SMRLayouts;
@@ -106,6 +111,16 @@
 				1D48256825982101001E4D74 /* SMRWidgets.h */,
 			);
 			path = SMRWidgets;
+			sourceTree = "<group>";
+		};
+		1D6B63D8259851640022576A /* SMRViews */ = {
+			isa = PBXGroup;
+			children = (
+				1D6B63D9259851740022576A /* SMRAppBarView.h */,
+				1D6B63DA259851740022576A /* SMRAppBarView.m */,
+				1D6B63DE259851B30022576A /* SMRViews.h */,
+			);
+			path = SMRViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +196,7 @@
 				1D482551259820C7001E4D74 /* ViewController.m in Sources */,
 				1D48254B259820C7001E4D74 /* AppDelegate.m in Sources */,
 				1D48255C259820C8001E4D74 /* main.m in Sources */,
+				1D6B63DB259851740022576A /* SMRAppBarView.m in Sources */,
 				1D48256D25982101001E4D74 /* SMRLayout.m in Sources */,
 				1D48254E259820C7001E4D74 /* SceneDelegate.m in Sources */,
 			);
@@ -259,7 +275,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -312,7 +328,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

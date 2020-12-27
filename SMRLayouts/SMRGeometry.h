@@ -8,6 +8,22 @@
 #ifndef SMRGeometry_h
 #define SMRGeometry_h
 
+UIKIT_STATIC_INLINE UIEdgeInsets SafeAreaInsets() {
+    if (@available(iOS 11.0, *)) {
+        return [UIApplication sharedApplication].windows.firstObject.safeAreaInsets;
+    } else {
+        return UIEdgeInsetsZero;
+    }
+}
+
+UIKIT_STATIC_INLINE CGFloat StatusBarHeight() {
+    if (@available(iOS 11.0, *)) {
+        return SafeAreaInsets().top ?: 20;
+    } else {
+        return 20;
+    }
+}
+
 UIKIT_STATIC_INLINE UIEdgeInsets UIEdgeInsetsMakeAll(CGFloat all) {
     UIEdgeInsets insets = {all, all, all, all};
     return insets;

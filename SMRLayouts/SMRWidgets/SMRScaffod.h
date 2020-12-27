@@ -9,22 +9,30 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SMRAppBar : SMRCombination
+@interface SMRContainer : SMRCombination
 
-@property (strong, nonatomic) NSArray<SMRLayout *> *leadings;
-@property (strong, nonatomic) NSArray<SMRLayout *> *actions;
-@property (strong, nonatomic) SMRLayout *title;
+@end
+
+@interface SMRAppBar : SMRCombination
 
 @end
 
 @interface SMRScaffod : SMRCombination
 
-@property (strong, nonatomic) UIView *view;
-
 @property (strong, nonatomic) SMRAppBar *appBar;
-@property (strong, nonatomic) SMRLayout *body;
+@property (strong, nonatomic) SMRCombination *body;
 
 @end
+
+@interface UIView (SMRCombination)
+
+- (SMRContainer *)viewContainer;
+
+@end
+
+UIKIT_STATIC_INLINE SMRContainer * Container(void (^ _Nullable block)(SMRContainer *set)) {
+    return [SMRContainer layout:block];
+}
 
 UIKIT_STATIC_INLINE SMRAppBar * AppBar(void (^ _Nullable block)(SMRAppBar *set)) {
     return [SMRAppBar layout:block];
