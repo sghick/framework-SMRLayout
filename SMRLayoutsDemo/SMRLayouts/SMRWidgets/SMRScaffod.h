@@ -9,10 +9,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SMRCombination : SMRLayout
-
-@end
-
 @interface SMRAppBar : SMRCombination
 
 @property (strong, nonatomic) NSArray<SMRLayout *> *leadings;

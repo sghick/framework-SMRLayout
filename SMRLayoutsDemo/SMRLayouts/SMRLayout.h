@@ -59,6 +59,7 @@ UIKIT_STATIC_INLINE CGFloat SMRCrossAlignOffset(CGFloat x1, CGFloat x2, SMRCross
 
 @property (assign, nonatomic, readonly) BOOL dirty;
 
+- (instancetype)init NS_UNAVAILABLE;
 + (instancetype)layout:(void (^)(__kindof SMRLayout *set))setting;
 
 - (void)setState;
@@ -67,6 +68,14 @@ UIKIT_STATIC_INLINE CGFloat SMRCrossAlignOffset(CGFloat x1, CGFloat x2, SMRCross
 - (CGRect)boundsThatFit;
 
 - (CGSize)layoutWithinBounds:(CGRect)bounds;
+
+@end
+
+/** 必须继承,不能单独使用 */
+@interface SMRCombination : SMRLayout
+
+/** 子类重写返回一个代理Layout */
+- (SMRLayout *)mainLayoutAfterInit;
 
 @end
 

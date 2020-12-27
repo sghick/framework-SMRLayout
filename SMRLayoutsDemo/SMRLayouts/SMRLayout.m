@@ -11,7 +11,7 @@
 @implementation SMRLayout
 
 + (instancetype)layout:(void (^)(__kindof SMRLayout * _Nonnull))setting {
-    id obj = [[self alloc] init];
+    id obj = [[super alloc] init];
     if (setting) {
         setting(obj);
     }
@@ -42,6 +42,42 @@
 
 - (CGSize)layoutWithinBounds:(CGRect)bounds {
     return bounds.size;
+}
+
+@end
+
+
+@interface SMRCombination ()
+
+@property (strong, nonatomic) SMRLayout *main;
+
+@end
+
+@implementation SMRCombination
+
++ (instancetype)layout:(void (^)(__kindof SMRLayout * _Nonnull))setting {
+    SMRCombination *combination = [super layout:setting];
+    combination.main = [combination mainLayoutAfterInit];
+    return combination;
+}
+
+- (SMRLayout *)mainLayoutAfterInit {
+    return nil;
+}
+
+- (void)setState {
+    [self.main setState];
+}
+
+- (CGSize)sizeThatFit {
+    return [self.main sizeThatFit];
+}
+- (CGRect)boundsThatFit {
+    return [self.main boundsThatFit];
+}
+
+- (CGSize)layoutWithinBounds:(CGRect)bounds {
+    return [self.main layoutWithinBounds:bounds];
 }
 
 @end

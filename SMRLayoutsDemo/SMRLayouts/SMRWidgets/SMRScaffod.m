@@ -7,47 +7,20 @@
 
 #import "SMRScaffod.h"
 
-@interface SMRCombination ()
-
-@property (strong, nonatomic) SMRLayout *main;
-
-@end
-
-@implementation SMRCombination
-
-- (void)setState {
-    [self.main setState];
-}
-
-- (CGSize)sizeThatFit {
-    return [self.main sizeThatFit];
-}
-- (CGRect)boundsThatFit {
-    return [self.main boundsThatFit];
-}
-
-- (CGSize)layoutWithinBounds:(CGRect)bounds {
-    return [self.main layoutWithinBounds:bounds];
-}
-
-@end
-
 @implementation SMRAppBar
 
-+ (instancetype)layout:(void (^)(__kindof SMRLayout * _Nonnull))setting {
-    SMRAppBar *this = [super layout:setting];
-    
+- (SMRLayout *)mainLayoutAfterInit {
     NSMutableArray *bars = [NSMutableArray array];
-    if (this.leadings.count) {
+    if (self.leadings.count) {
         [bars addObject:Row(^(SMRRow * _Nonnull set) {
-            set.children = this.leadings;
+            set.children = self.leadings;
         })];
     }
-    if (this.title) {
-        [bars addObject:this.title];
+    if (self.title) {
+        [bars addObject:self.title];
     }
-    if (this.actions.count) {
-        NSMutableArray *acts = [this.actions mutableCopy];
+    if (self.actions.count) {
+        NSMutableArray *acts = [self.actions mutableCopy];
         [acts addObject:Box(nil)];
         [bars addObject:Row(^(SMRRow * _Nonnull set) {
             set.children = [acts.reverseObjectEnumerator.allObjects copy];
@@ -66,37 +39,34 @@
         });
     })];
     
-    this.main = Box(^(SMRBox * _Nonnull set) {
+    return Box(^(SMRBox * _Nonnull set) {
         set.width = [UIScreen mainScreen].bounds.size.width;
         set.height = 24 + 20 + 44;
         set.child = Column(^(SMRColumn * _Nonnull set) {
             set.children = children;
         });
     });
-    return this;
 }
 
 @end
 
 @implementation SMRScaffod
 
-+ (instancetype)layout:(void (^)(__kindof SMRLayout * _Nonnull))setting {
-    SMRScaffod *this = [super layout:setting];
+- (SMRLayout *)mainLayoutAfterInit {
     NSMutableArray *children = [NSMutableArray array];
-    if (this.appBar) {
-        [children addObject:this.appBar];
+    if (self.appBar) {
+        [children addObject:self.appBar];
     }
-    if (this.body) {
-        [children addObject:this.body];
+    if (self.body) {
+        [children addObject:self.body];
     }
     
-    this.main = Box(^(SMRBox * _Nonnull set) {
-        set.view = this.view;
+    return Box(^(SMRBox * _Nonnull set) {
+        set.view = self.view;
         set.child = Column(^(SMRColumn * _Nonnull set) {
             set.children = children;
         });
     });
-    return this;
 }
 
 @end
