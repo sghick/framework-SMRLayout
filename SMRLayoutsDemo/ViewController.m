@@ -17,50 +17,42 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.view.backgroundColor = [UIColor darkGrayColor];
+    [self testLayoutOfBox1];
     
-    UIButton *back = [[UIButton alloc] init];
-    [back setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [back setTitle:@"<返回" forState:UIControlStateNormal];
-    [back sizeToFit];
-    
-    UIButton *share = [[UIButton alloc] init];
-    [share setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [share setTitle:@"分享" forState:UIControlStateNormal];
-    [share sizeToFit];
-    
-    SMRNavigationView *navigationView = [[SMRNavigationView alloc] init];
-    navigationView.leadings = @[back];
-    navigationView.actions = @[share];
-    navigationView.title = @"你好老板这是一个超级长的标题啊咱们自己";
-    
-    UIView *bodyView = [[UIView alloc] init];
-    bodyView.backgroundColor = [UIColor blueColor];
-    
-    UIView *testView = [[UIView alloc] init];
-    testView.backgroundColor = [UIColor redColor];
-    
-    [self.view addSubview:navigationView];
-    [self.view addSubview:bodyView];
-    [self.view addSubview:testView];
-    
-    SMRLayout *layout =
-    Box(^(SMRBox * _Nonnull set) {
-        set.view = self.view;
-        set.child = Column(^(SMRColumn * _Nonnull set) {
-            set.padding = UIEdgeInsetsMakeAll(20);
-            set.children = @[
-                Row(^(SMRRow * _Nonnull set) {
-                    set.children = @[
-                        Box(^(SMRBox * _Nonnull set) {
-                            set.view = bodyView;
-                        }),
-                        Box(^(SMRBox * _Nonnull set) {
-                            set.view = testView;
-                        }),
-                    ];
-                }),
+//    UIButton *back = [[UIButton alloc] init];
+//    [back setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [back setTitle:@"<返回" forState:UIControlStateNormal];
+//    back.backgroundColor = [UIColor cyanColor];
+////    [back sizeToFit];
+//
+//    UIButton *share = [[UIButton alloc] init];
+//    [share setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [share setTitle:@"分享" forState:UIControlStateNormal];
+//    share.backgroundColor = [UIColor purpleColor];
+////    [share sizeToFit];
+//
+//    SMRNavigationView *navigationView = [[SMRNavigationView alloc] init];
+//    navigationView.leadings = @[back];
+//    navigationView.actions = @[share];
+//    navigationView.title = @"你好老板这是一个超级长的标";
+//
+//    UIView *bodyView = [[UIView alloc] init];
+//    bodyView.backgroundColor = [UIColor blueColor];
+//
+//    UIView *testView = [[UIView alloc] init];
+//    testView.backgroundColor = [UIColor redColor];
+//
+//    [self.view addSubview:navigationView];
+//    [self.view addSubview:bodyView];
+//    [self.view addSubview:testView];
+//
+//    SMRLayout *layout =
+//    Box(^(SMRBox * _Nonnull set) {
+//        set.view = self.view;
+//        set.child = Column(^(SMRColumn * _Nonnull set) {
+//            set.padding = UIEdgeInsetsMakeAll(20);
+//            set.children = @[
 //                Row(^(SMRRow * _Nonnull set) {
 //                    set.children = @[
 //                        Box(^(SMRBox * _Nonnull set) {
@@ -74,16 +66,14 @@
 //                            set.view = bodyView;
 //                        }),
 //                        Box(^(SMRBox * _Nonnull set) {
-//                            set.width = 88;
-//                            set.height = 88;
 //                            set.view = testView;
 //                        }),
 //                    ];
 //                }),
-            ];
-        });
-    });
-    [layout setState];
+//            ];
+//        });
+//    });
+//    [layout setState];
     
 //    SMRLayout *layout =
 //    Scaffod(^(SMRScaffod * _Nonnull set) {
@@ -290,6 +280,28 @@
 //        [layout2 setState];
 //    } completion:nil];
     
+}
+
+- (void)testLayoutOfBox1 {
+    UILabel *label1 = [[UILabel alloc] init];
+    label1.backgroundColor = [UIColor blueColor];
+    label1.text = @"label1";
+    label1.textAlignment = NSTextAlignmentCenter;
+    [label1 sizeToFit];
+    [self.view addSubview:label1];
+    
+    
+    SMRLayout *layout =
+    Box(^(SMRBox * _Nonnull set) {
+        set.view = self.view;
+        set.padding = UIEdgeInsetsMakeAll(20);
+        set.align = SMRAlignCenterRight;
+        set.child = Box(^(SMRBox * _Nonnull set) {
+            set.padding = UIEdgeInsetsMakeAll(40);
+            set.child = label1.viewBox;
+        });
+    });
+    [layout setState];
 }
 
 
