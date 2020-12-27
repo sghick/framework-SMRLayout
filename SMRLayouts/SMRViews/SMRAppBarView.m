@@ -68,6 +68,7 @@
                 Row(^(SMRRow * _Nonnull set) {
                     set.children = @[
                         Row(^(SMRRow * _Nonnull set) {
+                            set.crossAlign = SMRCrossAlignCenter;
                             set.children = @[
                                 view2.viewBox,
                                 view3.viewBox,
@@ -84,12 +85,12 @@
                                 view5.viewBox,
                                 view6.viewBox,
                             ];
-                            view4.frame = CGRectMake(0, 0, view4.frame.size.width, 0);
-                            view5.frame = CGRectMake(0, 0, view5.frame.size.width, 0);
-                            view6.frame = CGRectMake(0, 0, view6.frame.size.width, 0);
+//                            view4.frame = CGRectMake(0, 0, view4.frame.size.width, 0);
+//                            view5.frame = CGRectMake(0, 0, view5.frame.size.width, 0);
+//                            view6.frame = CGRectMake(0, 0, view6.frame.size.width, 0);
                         }),
                     ];
-                    view.frame = CGRectMake(0, 0, view.frame.size.width, 0);
+//                    view.frame = CGRectMake(0, 0, view.frame.size.width, 0);
                 }),
             ];
         });

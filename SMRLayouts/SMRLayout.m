@@ -167,7 +167,7 @@
         if (limit.size.width && (fixChildWidth > limit.size.width)) {
             NSLog(@"warning:%@超出父布局限定宽:%@, in:%@", child, @(limit.size.width), self);
         }
-        maxHeight = MAX(maxHeight, csize.height);
+        maxHeight = MAX(maxHeight, csize.height ?: limit.size.height);
     }
     if (expendCount) {
         expendWidth = (limit.size.width - fixChildWidth)/expendCount;
@@ -216,7 +216,7 @@
         if (limit.size.height && (fixChildHeight > limit.size.height)) {
             NSLog(@"warning:%@超出父布局限定高:%@, in:%@", child, @(limit.size.height), self);
         }
-        maxWidth = MAX(maxWidth, csize.width);
+        maxWidth = MAX(maxWidth, csize.width ?: limit.size.width);
     }
     if (expendCount) {
         expendHeight = (limit.size.height - fixChildHeight)/expendCount;
