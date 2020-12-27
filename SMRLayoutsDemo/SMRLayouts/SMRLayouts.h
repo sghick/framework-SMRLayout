@@ -9,7 +9,6 @@
 #define SMRBoxing_h
 
 #import "SMRGeometry.h"
-#import "SMRLayouts.h"
 #import "SMRWidgets.h"
 
 #endif /* SMRBoxing_h */

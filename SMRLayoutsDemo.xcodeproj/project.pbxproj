@@ -89,10 +89,10 @@
 		1D48256325982101001E4D74 /* SMRLayouts */ = {
 			isa = PBXGroup;
 			children = (
+				1D48256B25982101001E4D74 /* SMRLayouts.h */,
 				1D48256425982101001E4D74 /* SMRGeometry.h */,
 				1D48256A25982101001E4D74 /* SMRLayout.h */,
 				1D48256925982101001E4D74 /* SMRLayout.m */,
-				1D48256B25982101001E4D74 /* SMRLayouts.h */,
 				1D48256525982101001E4D74 /* SMRWidgets */,
 			);
 			path = SMRLayouts;

@@ -53,36 +53,36 @@
     Scaffod(^(SMRScaffod * _Nonnull set) {
         set.view = self.view;
         set.appBar = AppBar(^(SMRAppBar * _Nonnull set) {
-//            set.leadings = @[
-//                Box(^(SMRBox * _Nonnull set) {
-//                    set.view = view1;
-//                    view1.text = @"返回";
-//                    [view1 sizeToFit];
-//                }),
-//                Box(^(SMRBox * _Nonnull set) {
-//                    set.view = view2;
-//                    view2.text = @"关闭";
-//                    [view2 sizeToFit];
-//                }),
-//            ];
-//            set.actions = @[
-//                Box(^(SMRBox * _Nonnull set) {
-//                    set.view = view4;
-//                    view4.text = @"收藏";
-//                    [view4 sizeToFit];
-//                }),
-//                Box(^(SMRBox * _Nonnull set) {
-//                    set.view = view5;
-//                    view5.text = @"分享";
-//                    [view5 sizeToFit];
-//                }),
-//            ];
-//            set.title = Box(^(SMRBox * _Nonnull set) {
-//                set.align = SMRAlignCenter;
-//                set.view = view3;
-//                view3.text = @"爱的覅i看来是";
-//                [view3 sizeToFit];
-//            });
+            set.leadings = @[
+                Box(^(SMRBox * _Nonnull set) {
+                    set.view = view1;
+                    view1.text = @"返回";
+                    [view1 sizeToFit];
+                }),
+                Box(^(SMRBox * _Nonnull set) {
+                    set.view = view2;
+                    view2.text = @"关闭";
+                    [view2 sizeToFit];
+                }),
+            ];
+            set.actions = @[
+                Box(^(SMRBox * _Nonnull set) {
+                    set.view = view4;
+                    view4.text = @"收藏";
+                    [view4 sizeToFit];
+                }),
+                Box(^(SMRBox * _Nonnull set) {
+                    set.view = view5;
+                    view5.text = @"分享";
+                    [view5 sizeToFit];
+                }),
+            ];
+            set.title = Box(^(SMRBox * _Nonnull set) {
+                set.align = SMRAlignCenter;
+                set.view = view3;
+                view3.text = @"爱的覅i看来是";
+                [view3 sizeToFit];
+            });
         });
         set.body = Box(^(SMRBox * _Nonnull set) {
             set.view = view7;
