@@ -63,10 +63,11 @@ UIKIT_STATIC_INLINE CGFloat SMRCrossAlignOffset(CGFloat x1, CGFloat x2, SMRCross
 
 - (CGRect)setState;
 
-- (CGSize)sizeOfLayout;
-- (CGRect)boundsOfLayout;
-
-- (CGSize)layoutThatFitSize:(CGSize)fitSize;
+/** 父亲询问其需要多大空间 */
+- (CGSize)sizeThatRequires;
+/** 父亲通知其可以使用多大空间,返回实际使用空间 */
+- (CGSize)sizeThatFitSize:(CGSize)fitSize;
+/** 父亲告诉其只能使用多大空间,并给出偏移位置,返回最终的偏移位置 */
 - (CGRect)layoutThatFitBounds:(CGRect)fitBounds;
 
 @end
