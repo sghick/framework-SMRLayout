@@ -5,11 +5,11 @@
 //  Created by Tinswin on 2021/1/2.
 //
 
-#import <UIKit/UIKit.h>
+#import "SMRBaseController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SMRColumnDemoController : UIViewController
+@interface SMRColumnDemoController : SMRBaseController
 
 @end
 

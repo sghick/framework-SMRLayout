@@ -69,7 +69,7 @@ UITableViewDelegate>
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SMRDemoItem *item = self.items[indexPath.row];
     UIViewController *vc = [[NSClassFromString(item.jumpClass) alloc] init];
-    [self presentViewController:vc animated:YES completion:nil];
+    [self.navigationController pushViewController:vc animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

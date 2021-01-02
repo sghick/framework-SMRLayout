@@ -5,9 +5,9 @@
 //  Created by Tinswin on 2020/10/24.
 //
 
-#import <UIKit/UIKit.h>
+#import "SMRBaseController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : SMRBaseController
 
 
 @end

@@ -1,15 +1,16 @@
 //
-//  SMRBoxDemoController.h
+//  SMRBaseController.h
 //  SMRLayoutsDemo
 //
 //  Created by Tinswin on 2021/1/2.
 //
 
-#import "SMRBaseController.h"
+#import <UIKit/UIKit.h>
+#import "SMRLayouts.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SMRBoxDemoController : SMRBaseController
+@interface SMRBaseController : UIViewController
 
 @end
 
