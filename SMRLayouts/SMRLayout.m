@@ -19,21 +19,21 @@
 }
 
 - (CGRect)setState {
-    CGSize qsize = [self sizeThatRequires];
-    CGSize fsize = [self sizeThatFitSize:qsize];
+    CGSize lsize = [self sizeThatRequires];
+    CGSize fsize = [self sizeThatLimitSize:lsize];
     CGRect fbounds = {0, 0, fsize};
-    return [self layoutThatFitBounds:fbounds];
+    return [self layoutThatFitBounds:fbounds limitSize:lsize];
 }
 
 - (CGSize)sizeThatRequires {
     return CGSizeZero;
 }
 
-- (CGSize)sizeThatFitSize:(CGSize)fitSize {
-    return fitSize;
+- (CGSize)sizeThatLimitSize:(CGSize)limitSize {
+    return limitSize;
 }
 
-- (CGRect)layoutThatFitBounds:(CGRect)fitBounds {
+- (CGRect)layoutThatFitBounds:(CGRect)fitBounds limitSize:(CGSize)limitSize {
     return fitBounds;
 }
 
@@ -66,12 +66,12 @@
     return [self.main sizeThatRequires];
 }
 
-- (CGSize)sizeThatFitSize:(CGSize)fitSize {
-    return [self.main sizeThatFitSize:fitSize];
+- (CGSize)sizeThatLimitSize:(CGSize)limitSize {
+    return [self.main sizeThatLimitSize:limitSize];
 }
 
-- (CGRect)layoutThatFitBounds:(CGRect)fitBounds {
-    return [self.main layoutThatFitBounds:fitBounds];
+- (CGRect)layoutThatFitBounds:(CGRect)fitBounds limitSize:(CGSize)limitSize {
+    return [self.main layoutThatFitBounds:fitBounds limitSize:limitSize];
 }
 
 @end
@@ -85,38 +85,36 @@
     return size;
 }
 
-- (CGSize)sizeThatFitSize:(CGSize)fitSize {
-    return fitSize;
+- (CGSize)sizeThatLimitSize:(CGSize)limitSize {
+    CGSize psize = CGSizeInPadding(limitSize, _padding);
+    if (_child) {
+        CGSize csize = [_child sizeThatLimitSize:psize];
+        if (limitSize.width && (csize.width > limitSize.width)) {
+            NSLog(@"warning:%@超出父布局限定宽:%@, in:%@", _child, @(limitSize.width), self);
+        }
+        if (limitSize.height && (csize.height > limitSize.height)) {
+            NSLog(@"warning:%@超出父布局限定宽:%@, in:%@", _child, @(limitSize.height), self);
+        }
+    }
+    return psize;
 }
 
-- (CGRect)layoutThatFitBounds:(CGRect)fitBounds {
-//    CGRect limit = CGRectInPadding(fitBounds, _padding);
-//    if (_child) {
-//        CGSize csize = [_child layoutThatFitSize:limit.size];
-//        if (fitBounds.size.width && (csize.width > limit.size.width)) {
-//            NSLog(@"warning:%@超出父布局限定宽:%@, in:%@", _child, @(limit.size.width), self);
-//        }
-//        if (fitBounds.size.height && (csize.height > limit.size.height)) {
-//            NSLog(@"warning:%@超出父布局限定宽:%@, in:%@", _child, @(limit.size.height), self);
-//        }
-//        CGSize useSize = CGSizeNoZero(csize, limit.size);
-//        CGRect frame = {limit.origin, useSize};
-//        CGPoint alignOffset = [self p_alignOffsetWithSize:useSize inSize:limit.size];
-//        frame = CGRectOffset(frame, alignOffset.x, alignOffset.y);
-//        limit = [_child layoutThatFitBounds:frame];
-//    }
-//
-//    if (_view) {
-//        CGRect useBounds = CGRectAddPadding(limit, _padding);
-//        CGSize viewSize = CGSizeNoZero(fitBounds.size, useBounds.size);
-//        CGRect frame = {fitBounds.origin, viewSize};
-//        _view.frame = frame;
-//        if ([_view isKindOfClass:UILabel.class]) {
-//            NSLog(@"label:%@", ((UILabel *)_view).text);
-//        } else {
-//            NSLog(@"view:%@", _view);
-//        }
-//    }
+- (CGRect)layoutThatFitBounds:(CGRect)fitBounds limitSize:(CGSize)limitSize {
+    if (_child) {
+        CGRect frame = fitBounds;
+        CGPoint alignOffset = [self p_alignOffsetWithSize:fitBounds.size inSize:limitSize];
+        frame = CGRectOffset(frame, alignOffset.x, alignOffset.y);
+        [_child layoutThatFitBounds:frame limitSize:limitSize];
+    }
+    
+    if (_view) {
+        _view.frame = fitBounds;
+        if ([_view isKindOfClass:UILabel.class]) {
+            NSLog(@"label:%@", ((UILabel *)_view).text);
+        } else {
+            NSLog(@"view:%@", _view);
+        }
+    }
     return fitBounds;
 }
 

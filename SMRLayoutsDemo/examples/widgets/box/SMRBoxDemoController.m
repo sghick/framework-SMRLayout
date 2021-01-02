@@ -27,12 +27,16 @@
     
     SMRLayout *layout = Box(^(SMRBox * _Nonnull set) {
         set.view = self.view;
+        set.padding = UIEdgeInsetsMakeAll(20);
         set.child = Box(^(SMRBox * _Nonnull set) {
             set.view = label1;
+            set.padding = UIEdgeInsetsMakeAll(20);
             set.child = Box(^(SMRBox * _Nonnull set) {
                 set.view = label2;
+                set.padding = UIEdgeInsetsMakeAll(20);
                 set.child = Box(^(SMRBox * _Nonnull set) {
                     set.view = label3;
+                    set.padding = UIEdgeInsetsMakeAll(20);
                     set.child = Box(^(SMRBox * _Nonnull set) {
                         set.view = label4;
                     });
