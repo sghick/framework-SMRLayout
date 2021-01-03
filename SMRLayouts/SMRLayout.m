@@ -72,7 +72,6 @@
 - (CGSize)sizeThatRequires {
     CGSize size = CGSizeMake(_width, _height);
     size = CGSizeNoZero(size, _view.frame.size);
-    size = CGSizeNoZero(size, [_child sizeThatRequires]);
     return size;
 }
 
