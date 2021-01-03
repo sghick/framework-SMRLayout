@@ -27,7 +27,7 @@
     
     SMRLayout *layout = Box(^(SMRBox * _Nonnull set) {
         set.view = self.view;
-        set.padding = UIEdgeInsetsMakeAll(20);
+        set.padding = UIEdgeInsetsMake(47 + 44 + 20, 20, 20, 20);
         set.child = Box(^(SMRBox * _Nonnull set) {
             set.view = label1;
             set.padding = UIEdgeInsetsMakeAll(20);
@@ -52,6 +52,7 @@
     label.text = title;
     label.backgroundColor = color;
     label.textColor = [UIColor blackColor];
+    label.textAlignment = NSTextAlignmentCenter;
     return label;
 }
 
