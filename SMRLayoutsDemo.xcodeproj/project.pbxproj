@@ -11,6 +11,7 @@
 		1D25EB8E25A0375000A54B6E /* SMRRowDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D25EB8D25A0375000A54B6E /* SMRRowDemoController.m */; };
 		1D25EB9225A0376200A54B6E /* SMRColumnDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D25EB9125A0376200A54B6E /* SMRColumnDemoController.m */; };
 		1D25EB9825A068CE00A54B6E /* SMRBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D25EB9725A068CE00A54B6E /* SMRBaseController.m */; };
+		1D25EB9E25A2001700A54B6E /* SMRScaffodDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D25EB9D25A2001700A54B6E /* SMRScaffodDemoController.m */; };
 		1D48254B259820C7001E4D74 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D48254A259820C7001E4D74 /* AppDelegate.m */; };
 		1D48254E259820C7001E4D74 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D48254D259820C7001E4D74 /* SceneDelegate.m */; };
 		1D482551259820C7001E4D74 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D482550259820C7001E4D74 /* ViewController.m */; };
@@ -32,6 +33,8 @@
 		1D25EB9125A0376200A54B6E /* SMRColumnDemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMRColumnDemoController.m; sourceTree = "<group>"; };
 		1D25EB9625A068CE00A54B6E /* SMRBaseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMRBaseController.h; sourceTree = "<group>"; };
 		1D25EB9725A068CE00A54B6E /* SMRBaseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMRBaseController.m; sourceTree = "<group>"; };
+		1D25EB9C25A2001700A54B6E /* SMRScaffodDemoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMRScaffodDemoController.h; sourceTree = "<group>"; };
+		1D25EB9D25A2001700A54B6E /* SMRScaffodDemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMRScaffodDemoController.m; sourceTree = "<group>"; };
 		1D482546259820C7001E4D74 /* SMRLayoutsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SMRLayoutsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D482549259820C7001E4D74 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D48254A259820C7001E4D74 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -94,6 +97,7 @@
 		1D25EB83259EDA1E00A54B6E /* widgets */ = {
 			isa = PBXGroup;
 			children = (
+				1D25EB9B25A2000100A54B6E /* scaffod */,
 				1D25EB84259EDA1E00A54B6E /* box */,
 				1D25EB85259EDA1E00A54B6E /* column */,
 				1D25EB86259EDA1E00A54B6E /* row */,
@@ -126,6 +130,15 @@
 				1D25EB8D25A0375000A54B6E /* SMRRowDemoController.m */,
 			);
 			path = row;
+			sourceTree = "<group>";
+		};
+		1D25EB9B25A2000100A54B6E /* scaffod */ = {
+			isa = PBXGroup;
+			children = (
+				1D25EB9C25A2001700A54B6E /* SMRScaffodDemoController.h */,
+				1D25EB9D25A2001700A54B6E /* SMRScaffodDemoController.m */,
+			);
+			path = scaffod;
 			sourceTree = "<group>";
 		};
 		1D48253D259820C6001E4D74 = {
@@ -270,6 +283,7 @@
 			files = (
 				1DA97C3F25987EA2007A056D /* SMRNavigationView.m in Sources */,
 				1D25EB9825A068CE00A54B6E /* SMRBaseController.m in Sources */,
+				1D25EB9E25A2001700A54B6E /* SMRScaffodDemoController.m in Sources */,
 				1DA97C3D25987EA2007A056D /* SMRScaffod.m in Sources */,
 				1D482551259820C7001E4D74 /* ViewController.m in Sources */,
 				1D48254B259820C7001E4D74 /* AppDelegate.m in Sources */,

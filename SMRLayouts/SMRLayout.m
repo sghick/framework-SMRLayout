@@ -149,15 +149,16 @@
 
 @implementation SMRRow
 
-//- (CGSize)sizeThatRequires {
-//    CGFloat width = CGFLOAT_MAX;
-//    CGFloat height = 0;
-//    for (SMRLayout *layout in _children) {
-//        CGSize size = [layout sizeThatRequires];
-//        height = MAX(height, size.height);
-//    }
-//    return CGSizeMake(width, height);
-//}
+- (CGSize)sizeThatRequires {
+    CGFloat width = 0;
+    CGFloat height = 0;
+    for (SMRLayout *child in _children) {
+        CGSize size = [child sizeThatRequires];
+        size = CGSizeAddPadding(size, _padding);
+        height = MAX(height, size.height);
+    }
+    return CGSizeMake(width, height);
+}
 
 - (CGRect)layoutThatLimitBounds:(CGRect)limitBounds {
     CGRect limit = CGRectInPadding(limitBounds, _padding);
@@ -206,15 +207,16 @@
 
 @implementation SMRColumn
 
-//- (CGSize)sizeThatRequires {
-//    CGFloat width = 0;
-//    CGFloat height = CGFLOAT_MAX;
-//    for (SMRLayout *layout in _children) {
-//        CGSize size = [layout sizeThatRequires];
-//        width = MAX(width, size.width);
-//    }
-//    return CGSizeMake(width, height);
-//}
+- (CGSize)sizeThatRequires {
+    CGFloat width = 0;
+    CGFloat height = 0;
+    for (SMRLayout *child in _children) {
+        CGSize size = [child sizeThatRequires];
+        size = CGSizeAddPadding(size, _padding);
+        width = MAX(width, size.width);
+    }
+    return CGSizeMake(width, height);
+}
 
 - (CGRect)layoutThatLimitBounds:(CGRect)limitBounds {
     CGRect limit = CGRectInPadding(limitBounds, _padding);

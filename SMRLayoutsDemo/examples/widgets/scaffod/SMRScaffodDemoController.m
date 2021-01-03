@@ -38,6 +38,14 @@
                         }),
                     ];
                 }),
+                Row(^(SMRRow * _Nonnull set) {
+                    set.children = @[
+                        Box(^(SMRBox * _Nonnull set) {
+                            set.height = 50;
+                            set.view = label2;
+                        }),
+                    ];
+                }),
                 label4.viewBox,
             ];
         });
