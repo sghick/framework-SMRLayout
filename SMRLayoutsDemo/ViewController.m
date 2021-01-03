@@ -50,6 +50,7 @@ UITableViewDelegate>
         [SMRDemoItem itemWithTitle:@"Box" detail:@"" jumpClass:@"SMRBoxDemoController"],
         [SMRDemoItem itemWithTitle:@"Row" detail:@"" jumpClass:@"SMRRowDemoController"],
         [SMRDemoItem itemWithTitle:@"Column" detail:@"" jumpClass:@"SMRColumnDemoController"],
+        [SMRDemoItem itemWithTitle:@"Scaffod" detail:@"" jumpClass:@"SMRScaffodDemoController"],
     ];
     [self.view addSubview:self.tableView];
 }
