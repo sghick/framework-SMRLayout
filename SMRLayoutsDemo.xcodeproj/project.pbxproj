@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D09BE232605F8A300D68000 /* SMRMigo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D09BE222605F8A300D68000 /* SMRMigo.m */; };
+		1D09BE282605F92A00D68000 /* SMRMigoDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D09BE272605F92A00D68000 /* SMRMigoDemoController.m */; };
 		1D25EB8925A0374400A54B6E /* SMRBoxDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D25EB8825A0374400A54B6E /* SMRBoxDemoController.m */; };
 		1D25EB8E25A0375000A54B6E /* SMRRowDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D25EB8D25A0375000A54B6E /* SMRRowDemoController.m */; };
 		1D25EB9225A0376200A54B6E /* SMRColumnDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D25EB9125A0376200A54B6E /* SMRColumnDemoController.m */; };
@@ -25,6 +27,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D09BE212605F8A300D68000 /* SMRMigo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMRMigo.h; sourceTree = "<group>"; };
+		1D09BE222605F8A300D68000 /* SMRMigo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMRMigo.m; sourceTree = "<group>"; };
+		1D09BE262605F92A00D68000 /* SMRMigoDemoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMRMigoDemoController.h; sourceTree = "<group>"; };
+		1D09BE272605F92A00D68000 /* SMRMigoDemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMRMigoDemoController.m; sourceTree = "<group>"; };
 		1D25EB8725A0374400A54B6E /* SMRBoxDemoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMRBoxDemoController.h; sourceTree = "<group>"; };
 		1D25EB8825A0374400A54B6E /* SMRBoxDemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMRBoxDemoController.m; sourceTree = "<group>"; };
 		1D25EB8C25A0375000A54B6E /* SMRRowDemoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMRRowDemoController.h; sourceTree = "<group>"; };
@@ -70,6 +76,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D09BE1E2605F73600D68000 /* examples2 */ = {
+			isa = PBXGroup;
+			children = (
+				1D09BE252605F91800D68000 /* SMRMigo */,
+			);
+			path = examples2;
+			sourceTree = "<group>";
+		};
+		1D09BE1F2605F7F400D68000 /* SMRMigo */ = {
+			isa = PBXGroup;
+			children = (
+				1D09BE212605F8A300D68000 /* SMRMigo.h */,
+				1D09BE222605F8A300D68000 /* SMRMigo.m */,
+			);
+			path = SMRMigo;
+			sourceTree = "<group>";
+		};
+		1D09BE252605F91800D68000 /* SMRMigo */ = {
+			isa = PBXGroup;
+			children = (
+				1D09BE262605F92A00D68000 /* SMRMigoDemoController.h */,
+				1D09BE272605F92A00D68000 /* SMRMigoDemoController.m */,
+			);
+			path = SMRMigo;
+			sourceTree = "<group>";
+		};
 		1D25EB7D259ED9CC00A54B6E /* examples */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +176,7 @@
 		1D48253D259820C6001E4D74 = {
 			isa = PBXGroup;
 			children = (
+				1D09BE1F2605F7F400D68000 /* SMRMigo */,
 				1DA97C3025987EA2007A056D /* SMRLayouts */,
 				1D482548259820C7001E4D74 /* SMRLayoutsDemo */,
 				1D482547259820C7001E4D74 /* Products */,
@@ -169,6 +202,7 @@
 				1D25EB9725A068CE00A54B6E /* SMRBaseController.m */,
 				1D48254F259820C7001E4D74 /* ViewController.h */,
 				1D482550259820C7001E4D74 /* ViewController.m */,
+				1D09BE1E2605F73600D68000 /* examples2 */,
 				1D25EB7D259ED9CC00A54B6E /* examples */,
 				1D482552259820C7001E4D74 /* Main.storyboard */,
 				1D482555259820C8001E4D74 /* Assets.xcassets */,
@@ -288,7 +322,9 @@
 				1D482551259820C7001E4D74 /* ViewController.m in Sources */,
 				1D48254B259820C7001E4D74 /* AppDelegate.m in Sources */,
 				1D48255C259820C8001E4D74 /* main.m in Sources */,
+				1D09BE282605F92A00D68000 /* SMRMigoDemoController.m in Sources */,
 				1D25EB8925A0374400A54B6E /* SMRBoxDemoController.m in Sources */,
+				1D09BE232605F8A300D68000 /* SMRMigo.m in Sources */,
 				1D25EB8E25A0375000A54B6E /* SMRRowDemoController.m in Sources */,
 				1DA97C3E25987EA2007A056D /* SMRLayout.m in Sources */,
 				1D48254E259820C7001E4D74 /* SceneDelegate.m in Sources */,
