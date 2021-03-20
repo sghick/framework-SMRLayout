@@ -141,11 +141,6 @@
 
 @end
 
-@implementation SMRExpand
-
-
-@end
-
 @implementation SMRRow
 
 - (CGSize)sizeThatRequires {
@@ -169,7 +164,7 @@
         SMRLayout *child = _children[idx];
         CGSize csize = [child sizeThatRequires];
         [fixSizes addObject:[NSValue valueWithCGSize:csize]];
-        if (csize.width && ![child isKindOfClass:SMRExpand.class]) {
+        if (csize.width) {
             fixChildWidth += csize.width;
         } else {
             expendCount ++;
@@ -227,7 +222,7 @@
         SMRLayout *child = _children[idx];
         CGSize csize =  [child sizeThatRequires];
         [fixSizes addObject:[NSValue valueWithCGSize:csize]];
-       if (csize.height && ![child isKindOfClass:SMRExpand.class]) {
+       if (csize.height) {
             fixChildHeight += csize.height;
         } else {
             expendCount ++;
