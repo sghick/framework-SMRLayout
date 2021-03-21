@@ -6,6 +6,7 @@
 //
 
 #import "SMRMigoDemoController.h"
+#import "SMRMigo.h"
 
 @interface SMRMigoDemoController ()
 
@@ -15,6 +16,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    SMRMigo *migo = [[SMRMigo alloc] init];
+    [self.view addSubview:migo.child];
+    
     
 }
 

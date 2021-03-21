@@ -9,4 +9,11 @@
 
 @implementation SMRMigo
 
+- (UIView *)child {
+    if (!_child) {
+        _child = [[UIView alloc] init];
+    }
+    return _child;
+}
+
 @end
